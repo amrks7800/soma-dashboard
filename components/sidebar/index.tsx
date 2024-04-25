@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { SidebarItem } from "@/types"
 import { FC, HTMLAttributes } from "react"
 import SidebarLink from "./SidebarLink"
-import { HomeIcon } from "lucide-react"
+import SidebarMenuLink from "./SidebarMenuLink"
 
 type Props = {
   sidebarProps?: HTMLAttributes<HTMLDivElement>
@@ -27,9 +27,17 @@ const Sidebar: FC<Props> = ({ sidebarProps, title, items }) => {
         )}
       </div>
       <ul className="grid">
-        {items.map((item, index) => (
-          <SidebarLink item={item} key={index} />
-        ))}
+        {items.map((item, index) =>
+          item.menu ? (
+            <SidebarMenuLink
+              item={item}
+              key={index}
+              menuItems={item.menuItems}
+            />
+          ) : (
+            <SidebarLink item={item} key={index} />
+          )
+        )}
       </ul>
     </div>
   )
