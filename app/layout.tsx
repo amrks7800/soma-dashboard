@@ -4,6 +4,8 @@ import "./globals.css"
 import Providers from "@/components/Providers"
 import { dashboardLinks } from "@/constants"
 import Sidebar from "@/components/sidebar"
+import SidebarHeader from "@/components/SidebarHeader"
+import DashboardHeader from "@/components/DashboardHeader"
 
 const cairo = Cairo({ subsets: ["latin", "arabic"] })
 
@@ -21,7 +23,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cairo.className}>
         <Providers>
-          <main className="h-screen overflow-auto grid grid-cols-[250px_1fr]">
+          <SidebarHeader />
+          <main className="h-screen overflow-auto md:grid md:grid-cols-[250px_1fr]">
             <Sidebar
               sidebarProps={{
                 className: "",
@@ -29,7 +32,10 @@ export default function RootLayout({
               title="soma-dashboard"
               items={dashboardLinks}
             />
-            <div className="container py-4">{children}</div>
+            <div>
+              <DashboardHeader />
+              <div className="container py-4 bg-light-blue">{children}</div>
+            </div>
           </main>
         </Providers>
       </body>

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        main: "var(--shadow-main)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -58,6 +61,7 @@ const config = {
         },
         light: {
           blue: "var(--clr-light-blue)",
+          gray: "var(--clr-light-gray)",
         },
       },
       borderRadius: {

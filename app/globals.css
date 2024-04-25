@@ -38,6 +38,7 @@
     --clr-primary-green: hsl(142, 51%, 60%);
 
     --clr-light-blue: hsl(206, 54%, 98%);
+    --clr-light-gray: hsl(0, 0%, 94%);
 
     --clr-accent-pink: hsl(332, 76%, 62%);
     --clr-accent-indigo: hsl(238, 88%, 66%);
@@ -74,6 +75,10 @@
     --ring: 212.7 26.8% 83.9%;
 
     --clr-light-blue: hsl(206, 40%, 25%);
+    --clr-light-gray: hsl(0, 0%, 65%);
+
+    --shadow-main: 0px 3px 3px -1px rgba(10, 22, 70, 0.1),
+      0px 0px 1px 0px rgba(10, 22, 70, 0.06) !important;
   }
 }
 
