@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 232 33% 13%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -36,6 +36,7 @@
 
     --clr-primary-blue: #60c3c9;
     --clr-primary-green: hsl(142, 51%, 60%);
+    --clr-primary-dark: hsla(229, 76%, 10%, 0.1);
 
     --clr-light-blue: hsl(206, 54%, 98%);
     --clr-light-gray: hsl(0, 0%, 94%);
@@ -43,6 +44,9 @@
     --clr-accent-pink: hsl(332, 76%, 62%);
     --clr-accent-indigo: hsl(238, 88%, 66%);
     --clr-accent-orange: hsl(31, 84%, 53%);
+
+    --shadow-tile: 0px 3px 3px -1px hsla(228, 75%, 16%, 0.1),
+      0px 0px 1px 0px rgba(10, 22, 70, 0.06);
   }
 
   .dark {
@@ -77,8 +81,8 @@
     --clr-light-blue: hsl(206, 40%, 25%);
     --clr-light-gray: hsl(0, 0%, 65%);
 
-    --shadow-main: 0px 3px 3px -1px rgba(10, 22, 70, 0.1),
-      0px 0px 1px 0px rgba(10, 22, 70, 0.06) !important;
+    --shadow-tile: 0px 3px 3px -1px rgba(10, 22, 70, 0.1),
+      0px 0px 1px 0px rgba(10, 22, 70, 0.06);
   }
 }
 
@@ -88,5 +92,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .flow > * + * {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
   }
 }

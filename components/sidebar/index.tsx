@@ -29,7 +29,7 @@ const Sidebar: FC<Props> = ({ sidebarProps, title, items }) => {
       )}
     >
       <div className="grid">
-        <h1 className="text-primary-blue text-[1.5rem] font-semibold p-4 mb-[4px]">
+        <h1 className="hidden md:block text-primary-blue text-[1.5rem] font-semibold p-4 mb-[4px]">
           {title}
         </h1>
         <ul className="grid">

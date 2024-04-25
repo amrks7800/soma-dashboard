@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={cairo.className}>
         <Providers>
           <SidebarHeader />
-          <main className="h-screen overflow-auto md:grid md:grid-cols-[250px_1fr]">
+          <main className="md:h-screen md:overflow-auto md:grid md:grid-cols-[250px_1fr]">
             <Sidebar
               sidebarProps={{
                 className: "",

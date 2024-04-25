@@ -13,3 +13,11 @@ export type SidebarMenuItem = {
   icon: ReactNode
   link: string
 }
+
+export type TUser = {
+  id: number
+  firstName: string
+  lastName: string
+  email: string
+  profileCreationDate: string
+}

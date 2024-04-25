@@ -1,4 +1,4 @@
-import { SidebarItem } from "@/types"
+import { SidebarItem, TUser } from "@/types"
 import {
   Calculator,
   Contact,
@@ -127,5 +127,29 @@ export const dashboardLinks: SidebarItem[] = [
         link: "/pages/contact",
       },
     ],
+  },
+]
+
+export const userData: TUser[] = [
+  {
+    id: 1,
+    firstName: "John", // Replace with actual first name
+    lastName: "Doe", // Replace with actual last name
+    email: "johndoe@example.com", // Replace with actual email address
+    profileCreationDate: new Date().toDateString(), // Current date and time
+  },
+  {
+    id: 2,
+    firstName: "Alice", // This will be random based on the firstNames array
+    lastName: "Smith", // This will be random based on the lastNames array
+    email: "Alice.Smith@example.com", // Email constructed from first and last name
+    profileCreationDate: "2024-04-25T...", // Random date within the last 30 days
+  },
+  {
+    id: 3,
+    firstName: "Bob", // This will be random based on the firstNames array
+    lastName: "Johnson", // This will be random based on the lastNames array
+    email: "Bob.Johnson@example.com", // Email constructed from first and last name
+    profileCreationDate: "2024-04-23T...", // Random date within the last 30 days
   },
 ]

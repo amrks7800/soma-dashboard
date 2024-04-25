@@ -1,10 +1,18 @@
 import StatisticCard from "@/components/StatisticCard"
-import { Clock, CreditCard, ShoppingBag, Users } from "lucide-react"
+import Tile from "@/components/Tile"
+import UserSearchForm from "@/components/UserSearchForm"
+import DataTable from "@/components/data-table"
+import { TableCell, TableRow } from "@/components/ui/table"
+import { Clock, CreditCard, ShoppingBag, Trash, Users } from "lucide-react"
+
+// replace those mock user data with your api
+import { userData } from "@/constants"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
-    <div className="bg">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="flow">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatisticCard
           title="عدد المنتجات"
           subtitle="263"
@@ -30,6 +38,39 @@ export default function Home() {
           accentColor="bg-accent-pink"
         />
       </div>
+      <Tile className="flow">
+        <header className="flex items-center justify-between flex-wrap">
+          <h2 className="text-lg font-[600]">العملاء</h2>
+          <UserSearchForm />
+        </header>
+        <DataTable
+          headers={[
+            "ID",
+            "الاسم الاول",
+            "الاسم الاخير",
+            "البريد الالكتروني",
+            "تاريخ انشاء الحساب",
+            "",
+          ]}
+        >
+          {userData.map(user => (
+            <TableRow>
+              <TableCell className="py-4 px-6">{user.id}</TableCell>
+              <TableCell className="py-4 px-6">{user.firstName}</TableCell>
+              <TableCell className="py-4 px-6">{user.lastName}</TableCell>
+              <TableCell className="py-4 px-6">{user.email}</TableCell>
+              <TableCell className="py-4 px-6">
+                {user.profileCreationDate}
+              </TableCell>
+              <TableCell className="py-4 px-6">
+                <Button className="aspect-square w-[50px]" variant={"outline"}>
+                  <Trash size={15} />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </DataTable>
+      </Tile>
     </div>
   )
 }

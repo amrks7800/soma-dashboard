@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       boxShadow: {
-        main: "var(--shadow-main)",
+        tile: "var(--shadow-tile)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -31,6 +31,7 @@ const config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           blue: "var(--clr-primary-blue)",
+          green: "var(--clr-primary-green)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
