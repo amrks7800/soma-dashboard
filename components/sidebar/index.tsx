@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { SidebarItem } from "@/types"
-import { FC, HTMLAttributes } from "react"
+import { FC, HTMLAttributes, useEffect } from "react"
 import SidebarLink from "./SidebarLink"
 import SidebarMenuLink from "./SidebarMenuLink"
 import { Button } from "../ui/button"
@@ -22,8 +22,8 @@ const Sidebar: FC<Props> = ({ sidebarProps, title, items }) => {
     <div
       {...sidebarProps}
       className={cn(
-        `overflow-auto shadow-md origin-top transition-all duration-700 ${
-          isOpen ? "max-md:h-screen" : "max-md:h-0"
+        `shadow-md origin-top transition-all duration-700 max-md:fixed max-md:w-full max-md:bg-background max-md:z-[40] ${
+          isOpen ? "max-md:h-[700px]" : "max-md:h-0"
         } overflow-hidden dark:border-e`,
         sidebarProps?.className
       )}

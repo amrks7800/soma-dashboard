@@ -1,4 +1,5 @@
 import DataPagination from "@/components/DataPagination"
+import OrderControls from "@/components/OrderControls"
 import OrderFilter from "@/components/OrderFilter"
 import SearchForm from "@/components/SearchForm"
 import Tile from "@/components/Tile"
@@ -31,6 +32,7 @@ const OrdersPage: FC<Props> = ({ searchParams }) => {
           "تكلفة الشحن",
           "العنوان",
           "حالة الطلب",
+          "",
         ]}
       >
         {ordersData.map(order => (
@@ -42,6 +44,11 @@ const OrdersPage: FC<Props> = ({ searchParams }) => {
             <TableCell className="py-4 px-6">${order.deliveryCost}</TableCell>
             <TableCell className="py-4 px-6">{order.address}</TableCell>
             <TableCell className="py-4 px-6">{order.orderStatus}</TableCell>
+            <TableCell className="py-4 px-6">
+              <div className="flex items-center gap-3">
+                <OrderControls active={Number(searchParams.active)} />
+              </div>
+            </TableCell>
           </TableRow>
         ))}
       </DataTable>

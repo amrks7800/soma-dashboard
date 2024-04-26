@@ -38,6 +38,7 @@ const OrderFilter = () => {
             changeOffset={changeOffset}
             active={active}
             changeActive={changeActive}
+            key={option.id}
           />
         ))}
 
