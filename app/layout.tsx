@@ -24,17 +24,19 @@ export default function RootLayout({
       <body className={cairo.className}>
         <Providers>
           <SidebarHeader />
-          <main className="md:h-screen md:overflow-auto md:grid md:grid-cols-[250px_1fr]">
+          <main className="md:h-screen md:overflow-auto md:grid md:grid-cols-[250px_1fr] dashboard">
             <Sidebar
               sidebarProps={{
                 className: "",
               }}
-              title="soma-dashboard"
+              title="elaf-dashboard"
               items={dashboardLinks}
             />
             <div>
               <DashboardHeader />
-              <div className="container py-4 bg-light-blue">{children}</div>
+              <div className="container py-4 bg-light-blue dark:bg-primary-dark screen-minus-headers overflow-auto">
+                <div className="">{children}</div>
+              </div>
             </div>
           </main>
         </Providers>

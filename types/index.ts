@@ -21,3 +21,8 @@ export type TUser = {
   email: string
   profileCreationDate: string
 }
+
+export type FilterOption = {
+  id: number
+  title: string
+}

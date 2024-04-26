@@ -1,4 +1,4 @@
-import { SidebarItem, TUser } from "@/types"
+import { FilterOption, SidebarItem, TUser } from "@/types"
 import {
   Calculator,
   Contact,
@@ -151,5 +151,58 @@ export const userData: TUser[] = [
     lastName: "Johnson", // This will be random based on the lastNames array
     email: "Bob.Johnson@example.com", // Email constructed from first and last name
     profileCreationDate: "2024-04-23T...", // Random date within the last 30 days
+  },
+]
+
+export const filterOptions: FilterOption[] = [
+  { id: 0, title: "قيد الانتظار" },
+  { id: 1, title: "قيد التأكيد" },
+  { id: 2, title: "قيد التسليم" },
+  { id: 3, title: "تم التسليم" },
+]
+
+export const orderSlug = [
+  "قيد الانتظار (في انتظار تأكيد العميل )",
+  "قيد التأكيد (في انتظار تأكيد الموقع)",
+  "قيد التسليم ( خاصه بطباعه الطلبات للتسليم الى شركة الشحن)",
+  "طلبات تم تسليمها الي العميل",
+]
+
+export const ordersData = [
+  {
+    orderNumber: "#12345",
+    userName: "John Doe",
+    orderDate: new Date(2024, 3, 20).toString(), // Example date (April 20, 2024)
+    totalCost: 45.99,
+    deliveryCost: 5.0,
+    address: "123 Main Street, Anytown, CA 12345",
+    orderStatus: "waiting",
+  },
+  {
+    orderNumber: "#67890",
+    userName: "Jane Smith",
+    orderDate: new Date(2024, 3, 22).toString(), // Example date (April 22, 2024)
+    totalCost: 129.75,
+    deliveryCost: 0.0, // Free delivery
+    address: "456 Elm Street, Anytown, CA 98765",
+    orderStatus: "waiting",
+  },
+  {
+    orderNumber: "#09876",
+    userName: "Alice Walker",
+    orderDate: new Date(2024, 4, 23).toString(), // Example date (today)
+    totalCost: 27.5,
+    deliveryCost: 3.99,
+    address: "789 Oak Lane, Springfield, IL 62704",
+    orderStatus: "waiting",
+  },
+  {
+    orderNumber: "#34567",
+    userName: "Bob Jones",
+    orderDate: new Date(2024, 4, 21).toString(), // Example date (two days ago)
+    totalCost: 82.14,
+    deliveryCost: 0.0, // Free delivery
+    address: "1000 Maple Street, Anytown, CA 98765",
+    orderStatus: "waiting",
   },
 ]

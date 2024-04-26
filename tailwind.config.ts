@@ -32,10 +32,13 @@ const config = {
           foreground: "hsl(var(--primary-foreground))",
           blue: "var(--clr-primary-blue)",
           green: "var(--clr-primary-green)",
+          dark: "var(--clr-primary-dark)",
+          text: "var(--clr-primary-text)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          dark: "var(--clr-secondary-dark)",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -63,6 +66,7 @@ const config = {
         light: {
           blue: "var(--clr-light-blue)",
           gray: "var(--clr-light-gray)",
+          grey: "var(--clr-neutral-200)",
         },
       },
       borderRadius: {

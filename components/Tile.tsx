@@ -10,7 +10,7 @@ const Tile: FC<Props> = ({ children, className, ...props }) => {
     <div
       dir="rtl"
       className={cn(
-        "p-5 shadow-tile rounded-lg bg-white dark:bg-secondary",
+        "p-5 shadow-tile rounded-lg bg-white dark:bg-secondary-dark",
         className
       )}
       {...props}

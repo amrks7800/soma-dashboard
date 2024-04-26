@@ -9,9 +9,9 @@ type Props = {
 
 const StatisticCard: FC<Props> = ({ accentColor, icon, subtitle, title }) => {
   return (
-    <div className="rounded-md bg-white dark:bg-secondary p-6 flex items-center justify-between shadow-tile">
+    <div className="rounded-md bg-white dark:bg-secondary-dark p-6 flex items-center justify-between shadow-tile">
       <div
-        className={`grid place-content-center w-14 rounded-full aspect-square ${accentColor}`}
+        className={`grid place-content-center w-14 rounded-full aspect-square ${accentColor} shadow-md`}
       >
         {icon}
       </div>

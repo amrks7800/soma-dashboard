@@ -9,7 +9,7 @@ const SidebarHeader = () => {
   return (
     <div className="p-4 flex items-center justify-between md:hidden border-b">
       <h1 className="text-primary-blue text-[1.5rem] font-semibold">
-        soma-dashboard
+        elaf-dashboard
       </h1>
 
       <Button variant={"ghost"} onClick={toggleSidebar} className="md:hidden">

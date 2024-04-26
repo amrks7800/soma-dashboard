@@ -1,13 +1,14 @@
 import StatisticCard from "@/components/StatisticCard"
 import Tile from "@/components/Tile"
-import UserSearchForm from "@/components/UserSearchForm"
+import SearchForm from "@/components/SearchForm"
 import DataTable from "@/components/data-table"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { Clock, CreditCard, ShoppingBag, Trash, Users } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import DataPagination from "@/components/DataPagination"
 
 // replace those mock user data with your api
 import { userData } from "@/constants"
-import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
@@ -41,7 +42,7 @@ export default function Home() {
       <Tile className="flow">
         <header className="flex items-center justify-between flex-wrap">
           <h2 className="text-lg font-[600]">العملاء</h2>
-          <UserSearchForm />
+          <SearchForm placeholder="أدخل اسم العميل" />
         </header>
         <DataTable
           headers={[
@@ -54,7 +55,7 @@ export default function Home() {
           ]}
         >
           {userData.map(user => (
-            <TableRow>
+            <TableRow key={user.id}>
               <TableCell className="py-4 px-6">{user.id}</TableCell>
               <TableCell className="py-4 px-6">{user.firstName}</TableCell>
               <TableCell className="py-4 px-6">{user.lastName}</TableCell>
@@ -70,6 +71,9 @@ export default function Home() {
             </TableRow>
           ))}
         </DataTable>
+        <div className="text-start">
+          <DataPagination />
+        </div>
       </Tile>
     </div>
   )

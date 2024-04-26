@@ -31,7 +31,7 @@ const DataTable: FC<Props> = ({
             <TableRow
               className={cn(
                 tableHeadRowClassName,
-                "bg-light-blue border-y border-[#e7eaf0]"
+                "bg-light-blue dark:bg-primary-dark border-y border-[#e7eaf0]"
               )}
             >
               {headers.map((header, index) => (
