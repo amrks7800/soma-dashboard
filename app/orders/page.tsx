@@ -14,7 +14,7 @@ type Props = {
 
 const OrdersPage: FC<Props> = ({ searchParams }) => {
   return (
-    <Tile className="flow">
+    <Tile className="flow mb-5">
       <header className="flex items-center justify-between flex-wrap">
         <h2 className="text-lg font-[600]">الطلبات</h2>
         <SearchForm placeholder="أدخل رقم الطلب" />

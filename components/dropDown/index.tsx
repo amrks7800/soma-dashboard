@@ -4,9 +4,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import useSidebar from "@/store/sidebar"
 import { SidebarMenuItem } from "@/types"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC } from "react"
 
 type Props = {
@@ -16,6 +18,8 @@ type Props = {
 }
 
 const Dropdown: FC<Props> = ({ triggerText, items, className }) => {
+  const router = useRouter()
+  const toggleSidebar = useSidebar(state => state.toggleSidebar)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -26,8 +30,14 @@ const Dropdown: FC<Props> = ({ triggerText, items, className }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className={className}>
         {items?.map(({ link, icon, text }, index) => (
-          <DropdownMenuItem key={index}>
-            <Link href={link} className="flex items-center gap-4 p-3 w-full">
+          <DropdownMenuItem
+            key={index}
+            onClick={() => {
+              toggleSidebar()
+              router.push(link)
+            }}
+          >
+            <Link href="" className="flex items-center gap-4 p-3 w-full">
               {icon}
               <p className={` text-sm`}>{text}</p>
             </Link>

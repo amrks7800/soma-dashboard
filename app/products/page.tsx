@@ -10,7 +10,7 @@ import Image from "next/image"
 
 const ProductsPage = () => {
   return (
-    <Tile className="p-0 flow">
+    <Tile className="p-0 flow mb-5">
       <header className="flex items-center justify-between flex-wrap p-5">
         <h2 className="text-lg font-[600]">المنتجات</h2>
         <SearchForm placeholder="أدخل اسم المنتج" />

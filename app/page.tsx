@@ -39,7 +39,7 @@ export default function Home() {
           accentColor="bg-accent-pink"
         />
       </div>
-      <Tile className="flow">
+      <Tile className="flow mb-5">
         <header className="flex items-center justify-between flex-wrap">
           <h2 className="text-lg font-[600]">العملاء</h2>
           <SearchForm placeholder="أدخل اسم العميل" />
