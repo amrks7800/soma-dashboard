@@ -256,3 +256,415 @@ export const productsData = [
     available: false, // Random availability
   },
 ]
+
+export const colorsData = [
+  {
+    id: 1,
+    nameAr: "أبيض", // Abiad - White
+    hex: "#ffffff",
+  },
+  {
+    id: 2,
+    nameAr: "أسود", // Aswad - Black
+    hex: "#000000",
+  },
+  {
+    id: 3,
+    nameAr: "أحمر", // Ahmar - Red
+    hex: "#ff0000",
+  },
+  {
+    id: 4,
+    nameAr: "أخضر", // Akhdar - Green
+    hex: "#00ff00",
+  },
+  {
+    id: 5,
+    nameAr: "أزرق", // Azraq - Blue
+    hex: "#0000ff",
+  },
+  {
+    id: 6,
+    nameAr: "برتقالي", // Burtuqali - Orange
+    hex: "#ffa500",
+  },
+  {
+    id: 7,
+    nameAr: "أصفر", // Asfar - Yellow
+    hex: "#ffff00",
+  },
+  {
+    id: 8,
+    nameAr: "وردي", // Wardi - Pink
+    hex: "#ffc0cb",
+  },
+  {
+    id: 9,
+    nameAr: "بني", // Bunni - Brown
+    hex: "#a52a2a",
+  },
+  {
+    id: 10,
+    nameAr: "رمادي", // Ramadi - Gray
+    hex: "#808080",
+  },
+  // ... You can add more colors here following the same structure
+]
+
+export const sectionsData = [
+  {
+    id: 1,
+    nameAr: "إلكترونيات", // Electronics (Arabic)
+    nameEn: "Electronics", // Electronics (English)
+    available: true,
+    description:
+      "Find a wide variety of electronics including TVs, laptops, smartphones, and more.",
+  },
+  {
+    id: 2,
+    nameAr: "أزياء رجالية", // Men's Fashion (Arabic)
+    nameEn: "Men's Fashion", // Men's Fashion (English)
+    available: true,
+    description: "Shop for clothing, shoes, and accessories for men.",
+  },
+  {
+    id: 3,
+    nameAr: "أزياء نسائية", // Women's Fashion (Arabic)
+    nameEn: "Women's Fashion", // Women's Fashion (English)
+    available: true,
+    description:
+      "Discover the latest trends in women's clothing, shoes, and accessories.",
+  },
+  {
+    id: 4,
+    nameAr: "ألعاب وأطفال", // Toys & Kids (Arabic)
+    nameEn: "Toys & Kids", // Toys & Kids (English)
+    available: true,
+    description:
+      "Explore a fun selection of toys, games, and everything for kids.",
+  },
+  {
+    id: 5,
+    nameAr: "منزل ومطبخ", // Home & Kitchen (Arabic)
+    nameEn: "Home & Kitchen", // Home & Kitchen (English)
+    available: true,
+    description:
+      "Equip your home with furniture, appliances, and kitchen essentials.",
+  },
+  {
+    id: 6,
+    nameAr: "جمال وصحة", // Beauty & Health (Arabic)
+    nameEn: "Beauty & Health", // Beauty & Health (English)
+    available: false, // This category is temporarily unavailable
+    description:
+      "Browse makeup, skincare, toiletries, and health products. (Currently unavailable)",
+  },
+  {
+    id: 7,
+    nameAr: "رياضة وترفيه", // Sports & Entertainment (Arabic)
+    nameEn: "Sports & Entertainment", // Sports & Entertainment (English)
+    available: true,
+    description:
+      "Find everything you need for your active lifestyle and entertainment.",
+  },
+  // ... You can add more categories here following the same structure
+]
+
+export const categoriesData = [
+  {
+    id: 1,
+    nameAr: "إلكترونيات", // Electronics (Arabic)
+    nameEn: "Electronics", // Electronics (English)
+    available: true,
+    description:
+      "Find a wide variety of electronics including TVs, laptops, smartphones, and more.",
+  },
+  {
+    id: 2,
+    nameAr: "أزياء رجالية", // Men's Fashion (Arabic)
+    nameEn: "Men's Fashion", // Men's Fashion (English)
+    available: true,
+    description: "Shop for clothing, shoes, and accessories for men.",
+  },
+  {
+    id: 3,
+    nameAr: "أزياء نسائية", // Women's Fashion (Arabic)
+    nameEn: "Women's Fashion", // Women's Fashion (English)
+    available: true,
+    description:
+      "Discover the latest trends in women's clothing, shoes, and accessories.",
+  },
+  {
+    id: 4,
+    nameAr: "ألعاب وأطفال", // Toys & Kids (Arabic)
+    nameEn: "Toys & Kids", // Toys & Kids (English)
+    available: true,
+    description:
+      "Explore a fun selection of toys, games, and everything for kids.",
+  },
+  {
+    id: 5,
+    nameAr: "منزل ومطبخ", // Home & Kitchen (Arabic)
+    nameEn: "Home & Kitchen", // Home & Kitchen (English)
+    available: true,
+    description:
+      "Equip your home with furniture, appliances, and kitchen essentials.",
+  },
+  {
+    id: 6,
+    nameAr: "جمال وصحة", // Beauty & Health (Arabic)
+    nameEn: "Beauty & Health", // Beauty & Health (English)
+    available: false, // This category is temporarily unavailable
+    description:
+      "Browse makeup, skincare, toiletries, and health products. (Currently unavailable)",
+  },
+  {
+    id: 7,
+    nameAr: "رياضة وترفيه", // Sports & Entertainment (Arabic)
+    nameEn: "Sports & Entertainment", // Sports & Entertainment (English)
+    available: true,
+    description:
+      "Find everything you need for your active lifestyle and entertainment.",
+  },
+  // ... You can add more categories here following the same structure
+]
+
+export const messagesData = [
+  {
+    id: 1,
+    message: "Hi there! How can I help you today?",
+    sender: {
+      name: "Customer Support",
+      email: "support@yourstore.com",
+      phone: "+1234567890",
+    },
+    date: new Date(2024, 4, 28).toDateString(), // Today's date
+  },
+  {
+    id: 2,
+    message: "Just placed an order, wanted to confirm the delivery timeframe.",
+    sender: {
+      name: "John Doe",
+      email: "john.doe@example.com",
+      phone: "+9876543210",
+    },
+    date: new Date(2024, 4, 27).toDateString(), // Yesterday's date
+  },
+  {
+    id: 3,
+    message: "Do you offer a return policy for a product I recently purchased?",
+    sender: {
+      name: "Jane Smith",
+      email: "jane.smith@email.com",
+      phone: "", // Optional phone number
+    },
+    date: new Date(2024, 4, 25).toDateString(), // Two days ago
+  },
+  // ... You can add more messages here following the same structure
+]
+
+export const subscribersData = [
+  {
+    id: "#1",
+    email: "user1@example.com",
+  },
+  {
+    id: "#2",
+    email: "user2@domain.com",
+  },
+  {
+    id: "#3",
+    email: "john.smith@company.org",
+  },
+  {
+    id: "#4",
+    email: "jane.doe@email.net",
+  },
+  // ... Add more objects following the same structure
+]
+
+const today = new Date()
+
+export const couponsData = [
+  {
+    id: 1,
+    couponCode: "FREESHIP10",
+    couponType: "free_delivery",
+    discountValue: null,
+    expiryDate: today.setDate(today.getDate() + 30).toLocaleString("en-US"), // Expiry in 30 days
+    numberOfUsers: 100,
+  },
+  {
+    id: 2,
+    couponCode: "SUMMER20",
+    couponType: "discount",
+    discountValue: 20,
+    expiryDate: today.setDate(today.getDate() + 15).toLocaleString("en-US"), // Expiry in 15 days
+    numberOfUsers: 50,
+  },
+  {
+    id: 3,
+    couponCode: "FALLSAVE15",
+    couponType: "discount",
+    discountValue: 15,
+    expiryDate: today.setDate(today.getDate() + 60).toLocaleString("en-US"), // Expiry in 60 days
+    numberOfUsers: 200,
+  },
+  // ... You can add more coupons here following the same structure
+]
+
+export const reviewsData = [
+  {
+    id: 1,
+    username: "John Doe",
+    productName: "Wireless Headphones",
+    comment:
+      "Great sound quality and comfortable to wear. Battery life is also good.",
+    rate: 5,
+    likes: 12,
+    dislikes: 2,
+  },
+  {
+    id: 2,
+    username: "Jane Smith",
+    productName: "Running Shoes",
+    comment:
+      "These shoes are perfect for my daily runs. They provide good support and are very lightweight.",
+    rate: 4,
+    likes: 8,
+    dislikes: 1,
+  },
+  {
+    id: 3,
+    username: "Alice Walker",
+    productName: "Smartwatch",
+    comment:
+      "The watch has a lot of features, but the battery life could be better. Overall, I'm happy with it.",
+    rate: 3,
+    likes: 5,
+    dislikes: 4,
+  },
+  {
+    id: 4,
+    username: "Bob Jones",
+    productName: "Laptop",
+    comment:
+      "This laptop is very fast and powerful. The screen is also very clear and bright.",
+    rate: 5,
+    likes: 15,
+    dislikes: 0,
+  },
+  {
+    id: 5,
+    username: "David Lee",
+    productName: "Camera",
+    comment:
+      "The camera takes great pictures, but it's a bit bulky and heavy to carry around.",
+    rate: 4,
+    likes: 7,
+    dislikes: 3,
+  },
+  // ... Add more reviews here following the same structure
+]
+
+export const accountsData = [
+  {
+    id: 1,
+    username: "John Doe",
+    orderId: "#ABC123",
+    orderDate: new Date(2024, 3, 15).toDateString(), // Order date (March 15, 2024)
+    totalCost: 78.99,
+    promocode: "SPRING10",
+  },
+  {
+    id: 2,
+    username: "Jane Smith",
+    orderId: "#DEF456",
+    orderDate: new Date(2024, 4, 20).toDateString(), // Order date (April 20, 2024)
+    totalCost: 125.42,
+    promocode: "", // No promo code used
+  },
+  {
+    id: 3,
+    username: "Alice Walker",
+    orderId: "#GHI789",
+    orderDate: new Date(2024, 4, 12).toDateString(), // Order date (April 12, 2024)
+    totalCost: 49.95,
+    promocode: "FREESHIP",
+  },
+  // ... Add more reviews here following the same structure
+]
+
+export const whoAreUsPageData = [
+  {
+    id: 1,
+    title: "Great Product!",
+    description:
+      "This product is exactly what I was looking for. It works perfectly and is very easy to use.",
+    imageUrl: "https://via.placeholder.com/200/778899?text=Review+Image+1", // Replace with actual image URL
+    visible: true,
+  },
+  {
+    id: 2,
+    title: "Not impressed",
+    description:
+      "The product arrived damaged and didn't meet my expectations. Disappointed.",
+    imageUrl: "https://via.placeholder.com/150/ff0000?text=Review+Image+2", // Replace with actual image URL
+    visible: false, // This review might be hidden due to negative content
+  },
+  {
+    id: 3,
+    title: "Would recommend",
+    description:
+      "Overall, a good product for the price. I'm happy with my purchase.",
+    imageUrl: "https://via.placeholder.com/300/00ff00?text=Review+Image+3", // Replace with actual image URL
+    visible: true,
+  },
+  {
+    id: 4,
+    title: "Awaiting Delivery",
+    description: "Haven't received the product yet, so I can't write a review.",
+    imageUrl: "https://via.placeholder.com/300/853f9c?text=Review+Image+3", // No image provided yet
+    visible: true, // Might be hidden until the review is complete
+  },
+  // ... Add more reviews here following the same structure
+]
+
+export const bannersData = [
+  {
+    id: 1,
+    pageName: "Home",
+    description: "The main landing page of the website.",
+    imageUrl: "https://via.placeholder.com/300x200?text=Home+Page", // Replace with desired size
+    visible: true,
+  },
+  {
+    id: 2,
+    pageName: "About Us",
+    description: "Company information, mission, and team members.",
+    imageUrl: "https://via.placeholder.com/250?text=About+Us", // Replace with desired size
+    visible: true,
+  },
+  {
+    id: 3,
+    pageName: "Products",
+    description: "Browse and explore all our available products.",
+    imageUrl: "https://via.placeholder.com/400x300?text=Products", // Replace with desired size
+    visible: true,
+  },
+  {
+    id: 4,
+    pageName: "Contact Us",
+    description: "Find our contact details and reach out to us.",
+    imageUrl: "https://via.placeholder.com/350?text=Contact+Us", // Replace with desired size
+    visible: true,
+  },
+  {
+    id: 5,
+    pageName: "FAQ",
+    description: "Frequently Asked Questions and Answers.",
+    imageUrl: "https://via.placeholder.com/200x150?text=FAQ", // Replace with desired size
+    visible: true,
+  },
+  // ... Add more pages here following the same structure
+]

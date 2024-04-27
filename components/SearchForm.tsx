@@ -15,7 +15,7 @@ const SearchForm: FC<Props> = ({ placeholder }) => {
         className="border border-light-gray focus-visible:ring-0 dark:bg-transparent focus:border-accent-indigo py-2 px-4 outline-0 transition-all focus:outline-4 outline-indigo-500"
         placeholder={placeholder}
       />
-      <Button className="border border-primary-green bg-transparent text-primary-green hover:bg-primary-green hover:text-foreground">
+      <Button className="border border-primary-green bg-transparent text-primary-green hover:bg-primary-green hover:text-white">
         بحث
       </Button>
     </form>

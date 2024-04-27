@@ -5,7 +5,7 @@ import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { productsData } from "@/constants"
-import { Brush, Edit, Trash } from "lucide-react"
+import { Edit, Trash } from "lucide-react"
 import Image from "next/image"
 
 const ProductsPage = () => {
@@ -47,7 +47,7 @@ const ProductsPage = () => {
             </TableCell>
             <TableCell className="py-4 px-6">{product.discount}%</TableCell>
             <TableCell className="py-4 px-6">
-              <div className="bg-primary-green leading-5 p-2 rounded-md text-white font-[600] text-sm text-center">
+              <div className="bg-primary-green leading-5 p-2 rounded-md text-white font-[600] text-sm text-center whitespace-nowrap">
                 {product.available ? "متاح" : "غير متاح"}
               </div>
             </TableCell>
@@ -59,13 +59,6 @@ const ProductsPage = () => {
                   title="تعديل المنتج"
                 >
                   <Edit size={15} />
-                </Button>
-                <Button
-                  className="aspect-square w-[50px]"
-                  variant={"outline"}
-                  title="اضافة لون"
-                >
-                  <Brush size={15} />
                 </Button>
                 <Button
                   className="aspect-square w-[50px]"

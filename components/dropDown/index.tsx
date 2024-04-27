@@ -1,3 +1,5 @@
+"use client"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +11,8 @@ import { SidebarMenuItem } from "@/types"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { FC } from "react"
+
+import type { FC } from "react"
 
 type Props = {
   triggerText: string
@@ -18,8 +21,10 @@ type Props = {
 }
 
 const Dropdown: FC<Props> = ({ triggerText, items, className }) => {
+  const { toggleSidebar, isOpen } = useSidebar()
+
   const router = useRouter()
-  const toggleSidebar = useSidebar(state => state.toggleSidebar)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -33,7 +38,8 @@ const Dropdown: FC<Props> = ({ triggerText, items, className }) => {
           <DropdownMenuItem
             key={index}
             onClick={() => {
-              toggleSidebar()
+              if (isOpen) toggleSidebar()
+
               router.push(link)
             }}
           >
