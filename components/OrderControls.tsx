@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { Button } from "./ui/button"
 import { Trash } from "lucide-react"
+import Link from "next/link"
 
 type Props = {
   active: number
@@ -18,8 +19,11 @@ const OrderControls: FC<Props> = ({ active }) => {
     </>
   ) : active === 1 ? (
     <>
-      <Button className="bg-primary-green text-white py-2 px-4 hover:bg-secondary-green">
-        عرض
+      <Button
+        className="bg-primary-green text-white py-2 px-4 hover:bg-secondary-green"
+        asChild
+      >
+        <Link href={"/order-data/1"}>عرض</Link>
       </Button>
       <Button className="bg-primary-green text-white py-2 px-4 hover:bg-secondary-green">
         تأكيد

@@ -1,4 +1,4 @@
-import { FilterOption, SidebarItem, TUser } from "@/types"
+import { Color, FilterOption, SidebarItem, TUser } from "@/types"
 import {
   Calculator,
   Contact,
@@ -257,7 +257,7 @@ export const productsData = [
   },
 ]
 
-export const colorsData = [
+export const colorsData: Color[] = [
   {
     id: 1,
     nameAr: "أبيض", // Abiad - White

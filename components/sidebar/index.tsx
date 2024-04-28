@@ -24,7 +24,7 @@ const Sidebar: FC<Props> = ({ sidebarProps, title, items }) => {
       className={cn(
         `shadow-md origin-top transition-all duration-700 max-md:fixed max-md:w-full max-md:bg-background max-md:z-[40] ${
           isOpen ? "max-md:h-[700px]" : "max-md:h-0"
-        } overflow-hidden dark:border-e`,
+        } overflow-hidden dark:border-e main-layout`,
         sidebarProps?.className
       )}
     >

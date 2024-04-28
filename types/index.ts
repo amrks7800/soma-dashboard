@@ -26,3 +26,9 @@ export type FilterOption = {
   id: number
   title: string
 }
+
+export type Color = {
+  nameAr: string
+  hex: string
+  id: number
+}

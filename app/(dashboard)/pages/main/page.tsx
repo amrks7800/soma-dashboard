@@ -2,7 +2,7 @@ import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
-import { bannersData, whoAreUsPageData } from "@/constants"
+import { bannersData } from "@/constants"
 import { Edit } from "lucide-react"
 import Image from "next/image"
 

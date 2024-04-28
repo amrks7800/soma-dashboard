@@ -9,7 +9,7 @@ import { Edit, Trash } from "lucide-react"
 const CouponsPage = () => {
   return (
     <Tile className="flow">
-      <h2 className="text-lg font-[600]">قائمة المشتركين</h2>
+      <h2 className="text-lg font-[600]">قائمة الكوبونات</h2>
       <DataTable
         headers={[
           "#",

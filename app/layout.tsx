@@ -2,10 +2,6 @@ import type { Metadata } from "next"
 import { Cairo } from "next/font/google"
 import "./globals.css"
 import Providers from "@/components/Providers"
-import { dashboardLinks } from "@/constants"
-import Sidebar from "@/components/sidebar"
-import SidebarHeader from "@/components/SidebarHeader"
-import DashboardHeader from "@/components/DashboardHeader"
 
 const cairo = Cairo({ subsets: ["latin", "arabic"] })
 
@@ -22,29 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cairo.className}>
-        <Providers>
-          <SidebarHeader />
-          <main className="md:grid md:grid-cols-[250px_1fr] dashboard">
-            <Sidebar
-              sidebarProps={{
-                className: "",
-              }}
-              title="elaf-dashboard"
-              items={dashboardLinks}
-            />
-            <div>
-              <DashboardHeader />
-
-              <div className="screen-minus-headers overflow-auto">
-                <div className="">
-                  <div className="container py-4 bg-light-blue dark:bg-primary-dark">
-                    {children}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

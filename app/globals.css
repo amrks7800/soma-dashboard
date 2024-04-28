@@ -101,7 +101,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  body:has(.dashboard) {
     overflow-y: hidden;
+  }
+
+  body:has(.order-data) .main-layout {
+    display: none;
   }
 }
 

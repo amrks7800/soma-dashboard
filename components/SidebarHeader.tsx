@@ -7,7 +7,7 @@ import { Menu } from "lucide-react"
 const SidebarHeader = () => {
   const toggleSidebar = useSidebar(state => state.toggleSidebar)
   return (
-    <div className="p-4 flex items-center justify-between md:hidden border-b h-[73px]">
+    <div className="p-4 flex items-center justify-between md:hidden border-b h-[73px] main-layout">
       <h1 className="text-primary-blue text-[1.5rem] font-semibold">
         elaf-dashboard
       </h1>
