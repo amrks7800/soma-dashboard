@@ -32,3 +32,15 @@ export type Color = {
   hex: string
   id: number
 }
+
+export type Product = {
+  id: number
+  imageUrl: string // Replace with actual image URL
+  archiveImageUrl: string
+  subImagesUrls: string[]
+  productName: string
+  price: number // Random price
+  availableQuantity: number // Random stock
+  discount: number // Random discount percentage
+  available: boolean // Random availability
+}

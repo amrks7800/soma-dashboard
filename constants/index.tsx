@@ -1,4 +1,4 @@
-import { Color, FilterOption, SidebarItem, TUser } from "@/types"
+import { Color, FilterOption, Product, SidebarItem, TUser } from "@/types"
 import {
   Calculator,
   Contact,
@@ -213,7 +213,7 @@ export const ordersData = [
   },
 ]
 
-export const productsData = [
+export const productsData: Product[] = [
   {
     id: 342,
     imageUrl:
@@ -223,6 +223,8 @@ export const productsData = [
     availableQuantity: 7, // Random stock
     discount: 12, // Random discount percentage
     available: true, // Random availability
+    archiveImageUrl: "",
+    subImagesUrls: [""],
   },
   {
     id: 819,
@@ -233,6 +235,8 @@ export const productsData = [
     availableQuantity: 4, // Random stock
     discount: 18, // Random discount percentage
     available: false, // Random availability
+    archiveImageUrl: "",
+    subImagesUrls: [""],
   },
   // ... 8 more product objects from previous generation
   {
@@ -244,6 +248,8 @@ export const productsData = [
     availableQuantity: 2, // Random stock
     discount: 5, // Random discount percentage
     available: true, // Random availability
+    archiveImageUrl: "",
+    subImagesUrls: [""],
   },
   {
     id: 951,
@@ -254,6 +260,8 @@ export const productsData = [
     availableQuantity: 9, // Random stock
     discount: 15, // Random discount percentage
     available: false, // Random availability
+    archiveImageUrl: "",
+    subImagesUrls: [""],
   },
 ]
 

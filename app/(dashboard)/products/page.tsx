@@ -7,6 +7,7 @@ import { TableCell, TableRow } from "@/components/ui/table"
 import { productsData } from "@/constants"
 import { Edit, Trash } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 const ProductsPage = () => {
   return (
@@ -57,8 +58,11 @@ const ProductsPage = () => {
                   className="aspect-square w-[50px]"
                   variant={"outline"}
                   title="تعديل المنتج"
+                  asChild
                 >
-                  <Edit size={15} />
+                  <Link href={`/products/${product.id}`}>
+                    <Edit size={15} />
+                  </Link>
                 </Button>
                 <Button
                   className="aspect-square w-[50px]"

@@ -7,7 +7,7 @@ type Props = ComponentProps<"input"> & {
   labelStyles?: string
 }
 
-const FormGroup: FC<Props> = ({
+const FileFormGroup: FC<Props> = ({
   className,
   id,
   label,
@@ -25,8 +25,9 @@ const FormGroup: FC<Props> = ({
           className
         )}
         {...props}
+        type="file"
       />
     </div>
   )
 }
-export default FormGroup
+export default FileFormGroup
