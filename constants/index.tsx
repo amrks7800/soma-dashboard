@@ -498,7 +498,7 @@ export const couponsData = [
     id: 1,
     couponCode: "FREESHIP10",
     couponType: "free_delivery",
-    discountValue: null,
+    discountValue: 0,
     expiryDate: today.setDate(today.getDate() + 30).toLocaleString("en-US"), // Expiry in 30 days
     numberOfUsers: 100,
   },

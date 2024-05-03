@@ -1,4 +1,5 @@
 import DataPagination from "@/components/DataPagination"
+import Modal from "@/components/Modal"
 import SearchForm from "@/components/SearchForm"
 import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
@@ -33,9 +34,15 @@ const MessagesPage = () => {
             <TableCell className="py-4 px-6">{message.date}</TableCell>
             <TableCell className="py-4 px-6">
               <div className="flex items-center gap-2">
-                <Button className="" variant={"outline"}>
-                  رؤية الرسالة
-                </Button>
+                <Modal
+                  triggerText={"رؤية الرسالة"}
+                  triggerProps={{
+                    className:
+                      "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
+                  }}
+                >
+                  <p className="text-xl">{message.message}</p>
+                </Modal>
                 <Button
                   className="aspect-square w-[50px]"
                   variant={"outline"}

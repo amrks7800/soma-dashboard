@@ -16,10 +16,11 @@ type Props = {
     value: string
     name: string
   }[]
-  triggerProps: React.ComponentProps<typeof SelectTrigger>
+  triggerProps?: React.ComponentProps<typeof SelectTrigger>
   placeholder: string
-  label: string
+  label?: string
   isColored?: boolean
+  defaultValue?: string
 }
 
 export function DataSelect({
@@ -28,12 +29,13 @@ export function DataSelect({
   placeholder,
   label,
   isColored = false,
+  defaultValue,
 }: Props) {
   return (
-    <Select dir="rtl">
+    <Select dir="rtl" defaultValue={defaultValue}>
       <SelectTrigger
         {...triggerProps}
-        className={cn("w-[180px]", triggerProps.className)}
+        className={cn("w-[180px]", triggerProps?.className)}
       >
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>

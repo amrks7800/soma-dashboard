@@ -44,3 +44,28 @@ export type Product = {
   discount: number // Random discount percentage
   available: boolean // Random availability
 }
+
+export type Category = {
+  id: number
+  nameAr: string // Electronics (Arabic)
+  nameEn: string // Electronics (English)
+  available: boolean
+  description: string
+}
+
+export type Coupon = {
+  id: number
+  couponCode: string
+  couponType: string
+  discountValue: number
+  expiryDate: string
+  numberOfUsers: number
+}
+
+export type Paragraph = {
+  id: number
+  title: string
+  description: string
+  imageUrl: string
+  visible: boolean
+}

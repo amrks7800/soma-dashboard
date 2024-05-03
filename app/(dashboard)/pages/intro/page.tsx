@@ -1,3 +1,5 @@
+import Modal from "@/components/Modal"
+import ParagraphForm from "@/components/ParagraphForm"
 import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
@@ -33,13 +35,15 @@ const IntroPage = () => {
             </TableCell>
             <TableCell className="py-4 px-6">
               <div className="flex items-center gap-2">
-                <Button
-                  className="aspect-square w-[50px]"
-                  variant={"outline"}
-                  title="تعديل الفقرة"
+                <Modal
+                  triggerText={<Edit size={15} />}
+                  triggerProps={{
+                    className:
+                      "aspect-square w-[35px] border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
+                  }}
                 >
-                  <Edit size={15} />
-                </Button>
+                  <ParagraphForm paragraph={phrase} />
+                </Modal>
               </div>
             </TableCell>
           </TableRow>

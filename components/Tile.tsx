@@ -1,13 +1,16 @@
 import { cn } from "@/lib/utils"
-import { FC, HTMLAttributes, ReactNode } from "react"
+import { FC, ReactNode, JSXElementConstructor, ComponentProps } from "react"
 
 type Props = {
   children: ReactNode
-} & HTMLAttributes<HTMLDivElement>
+  as?: keyof JSX.IntrinsicElements | JSXElementConstructor<any>
+} & ComponentProps<"div">
 
-const Tile: FC<Props> = ({ children, className, ...props }) => {
+const Tile: FC<Props> = ({ children, className, as, ...props }) => {
+  const Comp = as || "div"
+
   return (
-    <div
+    <Comp
       dir="rtl"
       className={cn(
         "p-5 shadow-tile rounded-lg bg-white dark:bg-secondary-dark",
@@ -16,7 +19,7 @@ const Tile: FC<Props> = ({ children, className, ...props }) => {
       {...props}
     >
       {children}
-    </div>
+    </Comp>
   )
 }
 export default Tile
