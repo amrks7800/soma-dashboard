@@ -69,3 +69,8 @@ export type Paragraph = {
   imageUrl: string
   visible: boolean
 }
+
+export type GroupType = {
+  name: string
+  description: string
+}

@@ -1,4 +1,11 @@
-import { Color, FilterOption, Product, SidebarItem, TUser } from "@/types"
+import {
+  Color,
+  FilterOption,
+  GroupType,
+  Product,
+  SidebarItem,
+  TUser,
+} from "@/types"
 import {
   Calculator,
   Contact,
@@ -57,7 +64,7 @@ export const dashboardLinks: SidebarItem[] = [
       {
         text: "اضافة مجموعة",
         icon: <Group size={18} color="#6b7b93" />,
-        link: "/product/group",
+        link: "/products/group",
       },
     ],
   },
@@ -675,4 +682,22 @@ export const bannersData = [
     visible: true,
   },
   // ... Add more pages here following the same structure
+]
+
+export const groupsData: GroupType[] = [
+  {
+    name: "Group A",
+    description:
+      "This is the description for Group A. It can contain any relevant information about the group.",
+  },
+  {
+    name: "Group B",
+    description:
+      "This is the description for Group B. You can add details about the purpose or activities of the group.",
+  },
+  {
+    name: "Group C",
+    description:
+      "Feel free to add more groups to this array. Each group object should have a 'name' and 'description' property.",
+  },
 ]

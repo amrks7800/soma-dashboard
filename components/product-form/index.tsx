@@ -4,7 +4,7 @@ import { ComponentProps, FC } from "react"
 import FileFormGroup from "../FileFormGroup"
 import FormGroup from "../FormGroup"
 import { DataSelect } from "../DataSelect"
-import { colorsData, sectionsData } from "@/constants"
+import { colorsData, groupsData, sectionsData } from "@/constants"
 import { Button } from "../ui/button"
 
 type Props = {
@@ -15,6 +15,11 @@ const ProductForm: FC<Props> = ({ product, className, ...props }) => {
   const sectionsOptions = sectionsData.map(item => ({
     name: item.nameAr,
     value: item.nameAr,
+  }))
+
+  const groupOptions = groupsData.map(item => ({
+    name: item.name,
+    value: item.description,
   }))
 
   const colorsOptions = colorsData.map(item => ({
@@ -61,6 +66,12 @@ const ProductForm: FC<Props> = ({ product, className, ...props }) => {
         label="الاقسام"
         options={sectionsOptions}
         placeholder="اختر القسم"
+        triggerProps={{ className: "w-full" }}
+      />
+      <DataSelect
+        label="المجموعات"
+        options={groupOptions}
+        placeholder="اختر المجموعة"
         triggerProps={{ className: "w-full" }}
       />
       <div className="flex flex-wrap gap-4 *:flex-1">

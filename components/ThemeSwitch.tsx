@@ -2,9 +2,10 @@
 import { Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Switch } from "./ui/switch"
-import { MouseEvent } from "react"
+import { useEffect, useState } from "react"
 
 export default function ThemeSwitch() {
+  const [isMounted, setIsMounted] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
   const handleSwitchTheme = () => {
@@ -15,10 +16,16 @@ export default function ThemeSwitch() {
     }
   }
 
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   return (
-    <div className="flex items-center gap-4">
-      <Switch onClick={handleSwitchTheme} />
-      {resolvedTheme === "dark" ? <Moon /> : <Sun />}
-    </div>
+    isMounted && (
+      <div className="flex items-center gap-4">
+        <Switch onClick={handleSwitchTheme} />
+        {resolvedTheme === "dark" ? <Moon /> : <Sun />}
+      </div>
+    )
   )
 }
