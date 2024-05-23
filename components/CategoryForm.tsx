@@ -2,32 +2,44 @@ import { Category } from "@/types"
 import { ComponentProps, FC } from "react"
 import FormGroup from "./FormGroup"
 import FileFormGroup from "./FileFormGroup"
-import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
+import SubmitButton from "./SubmitButton"
 
 type Props = {
   category?: Category
+  formAction?: (formData: FormData) => void
 } & ComponentProps<"form">
 
-const CategoryForm: FC<Props> = ({ category, className, ...props }) => {
+const CategoryForm: FC<Props> = ({
+  category,
+  className,
+  formAction,
+  ...props
+}) => {
   return (
-    <form className={cn("grid gap-4", className)} {...props}>
+    <form
+      className={cn("grid gap-4", className)}
+      {...props}
+      action={formAction}
+      encType="multipart/form-data"
+    >
       <FormGroup
         label="اسم القسم بالانجليزي:"
-        defaultValue={category?.nameEn}
+        defaultValue={category?.categoryNameEn}
+        name="categoryNameEn"
       />
-      <FormGroup label="اسم القسم بالعربي:" defaultValue={category?.nameAr} />
-      <FileFormGroup label="صورة صقحة القسم:" />
+      <FormGroup
+        label="اسم القسم بالعربي:"
+        defaultValue={category?.categoryNameAr}
+        name="categoryNameAr"
+      />
+      <FileFormGroup label="صورة صقحة القسم:" name="files" />
       <FormGroup
         label="وصف صورة صفحة القسم:"
         defaultValue={category?.description}
+        name="description"
       />
-      <Button
-        variant={"outline"}
-        className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
-      >
-        حفظ
-      </Button>
+      <SubmitButton />
     </form>
   )
 }

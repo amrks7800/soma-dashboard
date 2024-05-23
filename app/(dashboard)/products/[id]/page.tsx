@@ -1,5 +1,5 @@
 import ProductForm from "@/components/product-form"
-import { productsData } from "@/constants"
+import { getProductByID } from "@/fetchers"
 import { FC } from "react"
 
 type Props = {
@@ -8,13 +8,15 @@ type Props = {
   }
 }
 
-const ProductFormPage: FC<Props> = ({ params: { id } }) => {
+const ProductFormPage: FC<Props> = async ({ params: { id } }) => {
   //use the id to fetch the product from api
   console.log(id)
 
+  const product = await getProductByID(id)
+
   return (
     <div>
-      <ProductForm product={productsData[0]} />
+      <ProductForm product={product?.data?.result} />
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { addCategory } from "@/actions"
 import CategoryForm from "@/components/CategoryForm"
 import DataPagination from "@/components/DataPagination"
 import Modal from "@/components/Modal"
@@ -5,10 +6,14 @@ import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
-import { sectionsData } from "@/constants"
+import { getAllCategories } from "@/fetchers"
 import { Edit, Trash } from "lucide-react"
 
-const AddCategoryPage = () => {
+const AddCategoryPage = async () => {
+  const categories = await getAllCategories()
+
+  console.log(categories?.data?.result[0].logoUrl)
+
   return (
     <Tile className="flow">
       <header className="flex items-center justify-between">
@@ -20,7 +25,7 @@ const AddCategoryPage = () => {
               "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
           }}
         >
-          <CategoryForm />
+          <CategoryForm formAction={addCategory} />
         </Modal>
       </header>
       <DataTable
@@ -33,21 +38,25 @@ const AddCategoryPage = () => {
           "",
         ]}
       >
-        {sectionsData.map(section => (
-          <TableRow key={section.id}>
-            <TableCell className="py-4 px-6">{section.id}</TableCell>
-            <TableCell className="py-4 px-6">{section.nameAr}</TableCell>
-            <TableCell className="py-4 px-6">{section.nameEn}</TableCell>
+        {categories?.data?.result.map((category, idx) => (
+          <TableRow key={category.id}>
+            <TableCell className="py-4 px-6">{idx + 1}</TableCell>
+            <TableCell className="py-4 px-6">
+              {category.categoryNameAr}
+            </TableCell>
+            <TableCell className="py-4 px-6">
+              {category.categoryNameEn}
+            </TableCell>
             <TableCell
-              title={section.description}
+              title={category.description}
               className="line-clamp-1"
               dir="ltr"
             >
-              {section.description}
+              {category.description}
             </TableCell>
             <TableCell className="py-4 px-6">
               <div className="bg-primary-green leading-5 p-2 rounded-md text-white font-[600] text-sm text-center whitespace-nowrap">
-                {section.available ? "متاح" : "غير متاح"}
+                {category.id ? "متاح" : "غير متاح"}
               </div>
             </TableCell>
             <TableCell className="py-4 px-6">
@@ -59,7 +68,7 @@ const AddCategoryPage = () => {
                       "aspect-square w-[35px] border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
                   }}
                 >
-                  <CategoryForm category={section} />
+                  <CategoryForm category={category} />
                 </Modal>
                 <Button
                   className="aspect-square w-[35px] h-[35px]"

@@ -38,6 +38,7 @@ const ProductForm: FC<Props> = ({ product, className, ...props }) => {
         labelStyles="text-primary-blue text-xl"
       />
       <FileFormGroup
+        multiple
         label="الصور الفرعية"
         labelStyles="text-primary-blue text-xl"
       />
@@ -95,7 +96,11 @@ const ProductForm: FC<Props> = ({ product, className, ...props }) => {
             },
           ]}
           placeholder={
-            product ? (product.available ? "متاح" : "غير متاح") : "اختر الحالة"
+            product
+              ? product.productCapacity && product.productCapacity > 0
+                ? "متاح"
+                : "غير متاح"
+              : "اختر الحالة"
           }
           triggerProps={{ className: "w-full" }}
         />

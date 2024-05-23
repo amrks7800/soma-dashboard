@@ -3,6 +3,7 @@
 import useSidebar from "@/store/sidebar"
 import { Button } from "./ui/button"
 import { Menu } from "lucide-react"
+import { login } from "@/actions"
 
 const SidebarHeader = () => {
   const toggleSidebar = useSidebar(state => state.toggleSidebar)
@@ -15,6 +16,9 @@ const SidebarHeader = () => {
       <Button variant={"ghost"} onClick={toggleSidebar} className="md:hidden">
         <Menu size={25} color="#6b7b93" />
       </Button>
+      <form>
+        <Button formAction={login}>login</Button>
+      </form>
     </div>
   )
 }

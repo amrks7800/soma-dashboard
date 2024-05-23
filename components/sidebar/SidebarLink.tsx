@@ -2,7 +2,7 @@
 
 import { SidebarItem } from "@/types"
 import Link from "next/link"
-import { FC, ReactNode, useMemo } from "react"
+import { FC, useMemo } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import useSidebar from "@/store/sidebar"
 
@@ -33,7 +33,7 @@ const SidebarLink: FC<Props> = ({ item: { text, link, icon } }) => {
     >
       <Link href="" className="flex items-center gap-4 p-3 w-full">
         {icon}
-        <p className={` text-sm`}>{text}</p>
+        <p className={`text-sm`}>{text}</p>
       </Link>
     </li>
   )

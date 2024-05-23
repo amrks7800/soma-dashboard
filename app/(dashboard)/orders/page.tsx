@@ -6,7 +6,7 @@ import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { orderSlug, ordersData } from "@/constants"
-import { FC } from "react"
+import { FC, Suspense } from "react"
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -17,7 +17,9 @@ const OrdersPage: FC<Props> = ({ searchParams }) => {
     <Tile className="flow mb-5">
       <header className="flex items-center justify-between flex-wrap">
         <h2 className="text-lg font-[600]">الطلبات</h2>
-        <SearchForm placeholder="أدخل رقم الطلب" />
+        <Suspense fallback="loading...">
+          <SearchForm placeholder="أدخل رقم الطلب" />
+        </Suspense>
       </header>
       <OrderFilter />
       <h2 className="text-lg font-[600]">

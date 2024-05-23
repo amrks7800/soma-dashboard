@@ -15,11 +15,10 @@ export type SidebarMenuItem = {
 }
 
 export type TUser = {
-  id: number
-  firstName: string
-  lastName: string
+  id: string
+  name: string
   email: string
-  profileCreationDate: string
+  createdAt: string
 }
 
 export type FilterOption = {
@@ -34,23 +33,30 @@ export type Color = {
 }
 
 export type Product = {
-  id: number
-  imageUrl: string // Replace with actual image URL
-  archiveImageUrl: string
-  subImagesUrls: string[]
   productName: string
-  price: number // Random price
-  availableQuantity: number // Random stock
-  discount: number // Random discount percentage
-  available: boolean // Random availability
+  productReviews: string
+  price: string
+  discountPrice: number | null
+  createdAt: string
+  totalRates: number | null
+  ratedUsersCount: number | null
+  description: string
+  colorName: string
+  id: string
+  productImages: string
+  mainImage: string
+  coverImage: string
+  header: string
+  productCapacity?: number
+  group: null | string
 }
 
 export type Category = {
-  id: number
-  nameAr: string // Electronics (Arabic)
-  nameEn: string // Electronics (English)
-  available: boolean
+  id: string
+  categoryNameAr: string
+  categoryNameEn: string
   description: string
+  logoUrl: string
 }
 
 export type Coupon = {
@@ -74,3 +80,11 @@ export type GroupType = {
   name: string
   description: string
 }
+
+export type ReturnType<T extends {}> = {
+  message: string
+  result: T
+  statusEnum: number
+}
+
+export type ProductsQueryReturnType = ReturnType<Product[]>

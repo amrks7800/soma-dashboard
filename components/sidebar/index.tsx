@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { SidebarItem } from "@/types"
-import { FC, HTMLAttributes, useEffect } from "react"
+import { FC, HTMLAttributes } from "react"
 import SidebarLink from "./SidebarLink"
 import SidebarMenuLink from "./SidebarMenuLink"
 import { Button } from "../ui/button"

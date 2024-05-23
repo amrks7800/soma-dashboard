@@ -143,30 +143,6 @@ export const dashboardLinks: SidebarItem[] = [
   },
 ]
 
-export const userData: TUser[] = [
-  {
-    id: 1,
-    firstName: "John", // Replace with actual first name
-    lastName: "Doe", // Replace with actual last name
-    email: "johndoe@example.com", // Replace with actual email address
-    profileCreationDate: new Date().toDateString(), // Current date and time
-  },
-  {
-    id: 2,
-    firstName: "Alice", // This will be random based on the firstNames array
-    lastName: "Smith", // This will be random based on the lastNames array
-    email: "Alice.Smith@example.com", // Email constructed from first and last name
-    profileCreationDate: "2024-04-25T...", // Random date within the last 30 days
-  },
-  {
-    id: 3,
-    firstName: "Bob", // This will be random based on the firstNames array
-    lastName: "Johnson", // This will be random based on the lastNames array
-    email: "Bob.Johnson@example.com", // Email constructed from first and last name
-    profileCreationDate: "2024-04-23T...", // Random date within the last 30 days
-  },
-]
-
 export const filterOptions: FilterOption[] = [
   { id: 0, title: "قيد الانتظار" },
   { id: 1, title: "قيد التأكيد" },
@@ -217,58 +193,6 @@ export const ordersData = [
     deliveryCost: 0.0, // Free delivery
     address: "1000 Maple Street, Anytown, CA 98765",
     orderStatus: "waiting",
-  },
-]
-
-export const productsData: Product[] = [
-  {
-    id: 342,
-    imageUrl:
-      "https://utfs.io/f/ca0c8e98-b523-47b5-8183-eb8a602e5774-n7tc0m.png", // Replace with actual image URL
-    productName: "Product 1",
-    price: 72.87, // Random price
-    availableQuantity: 7, // Random stock
-    discount: 12, // Random discount percentage
-    available: true, // Random availability
-    archiveImageUrl: "",
-    subImagesUrls: [""],
-  },
-  {
-    id: 819,
-    imageUrl:
-      "https://utfs.io/f/3ca553b3-0d69-433a-bd60-9864520bf3ff-jmipy7.png", // Replace with actual image URL
-    productName: "Product 2",
-    price: 27.14, // Random price
-    availableQuantity: 4, // Random stock
-    discount: 18, // Random discount percentage
-    available: false, // Random availability
-    archiveImageUrl: "",
-    subImagesUrls: [""],
-  },
-  // ... 8 more product objects from previous generation
-  {
-    id: 123,
-    imageUrl:
-      "https://utfs.io/f/cdd5f13e-6507-413f-8962-ae16da4a8482-m2cayy.png", // Replace with actual image URL
-    productName: "Product 11",
-    price: 48.52, // Random price
-    availableQuantity: 2, // Random stock
-    discount: 5, // Random discount percentage
-    available: true, // Random availability
-    archiveImageUrl: "",
-    subImagesUrls: [""],
-  },
-  {
-    id: 951,
-    imageUrl:
-      "https://utfs.io/f/26d55d67-ab8d-4a9e-8eaf-cfd0ae007d72-enwcij.png", // Replace with actual image URL
-    productName: "Product 12",
-    price: 93.78, // Random price
-    availableQuantity: 9, // Random stock
-    discount: 15, // Random discount percentage
-    available: false, // Random availability
-    archiveImageUrl: "",
-    subImagesUrls: [""],
   },
 ]
 

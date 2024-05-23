@@ -7,13 +7,16 @@ import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { messagesData } from "@/constants"
 import { Trash } from "lucide-react"
+import { Suspense } from "react"
 
 const MessagesPage = () => {
   return (
     <Tile className="flow">
       <header className="flex items-center justify-between flex-wrap">
         <h2 className="text-lg font-[600]">الرسائل</h2>
-        <SearchForm placeholder="أدخل اسم الشخص" />
+        <Suspense fallback="loading...">
+          <SearchForm placeholder="أدخل اسم الشخص" />
+        </Suspense>
       </header>
       <DataTable
         headers={[

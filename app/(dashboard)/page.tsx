@@ -2,15 +2,19 @@ import StatisticCard from "@/components/StatisticCard"
 import Tile from "@/components/Tile"
 import SearchForm from "@/components/SearchForm"
 import DataTable from "@/components/data-table"
-import { TableCell, TableRow } from "@/components/ui/table"
-import { Clock, CreditCard, ShoppingBag, Trash, Users } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Clock, CreditCard, ShoppingBag, Users } from "lucide-react"
 import DataPagination from "@/components/DataPagination"
+import { getUsers } from "@/fetchers"
+import UserTableRow from "@/components/UserTableRow"
+import { Suspense } from "react"
 
-// replace those mock user data with your api
-import { userData } from "@/constants"
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-export default function Home() {
+export default async function Home({ searchParams }: Props) {
+  const users = await getUsers(searchParams.name as string)
+
   return (
     <div className="flow">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -42,35 +46,26 @@ export default function Home() {
       <Tile className="flow mb-5">
         <header className="flex items-center justify-between flex-wrap">
           <h2 className="text-lg font-[600]">العملاء</h2>
-          <SearchForm placeholder="أدخل اسم العميل" />
+          <Suspense fallback="loading...">
+            <SearchForm placeholder="أدخل اسم العميل" queryName="name" />
+          </Suspense>
         </header>
-        <DataTable
-          headers={[
-            "ID",
-            "الاسم الاول",
-            "الاسم الاخير",
-            "البريد الالكتروني",
-            "تاريخ انشاء الحساب",
-            "",
-          ]}
-        >
-          {userData.map(user => (
-            <TableRow key={user.id}>
-              <TableCell className="py-4 px-6">{user.id}</TableCell>
-              <TableCell className="py-4 px-6">{user.firstName}</TableCell>
-              <TableCell className="py-4 px-6">{user.lastName}</TableCell>
-              <TableCell className="py-4 px-6">{user.email}</TableCell>
-              <TableCell className="py-4 px-6">
-                {user.profileCreationDate}
-              </TableCell>
-              <TableCell className="py-4 px-6">
-                <Button className="aspect-square w-[50px]" variant={"outline"}>
-                  <Trash size={15} />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </DataTable>
+        <Suspense fallback="loading...">
+          <DataTable
+            headers={[
+              "ID",
+              "الاسم الاول",
+              "الاسم الاخير",
+              "البريد الالكتروني",
+              "تاريخ انشاء الحساب",
+              "",
+            ]}
+          >
+            {users?.data?.result.map((user, idx) => (
+              <UserTableRow user={user} key={user.id} number={idx + 1} />
+            ))}
+          </DataTable>
+        </Suspense>
         <div className="text-start">
           <DataPagination />
         </div>
