@@ -5,11 +5,15 @@ import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
-import { messagesData } from "@/constants"
+import { getAllUserMessages } from "@/fetchers"
 import { Trash } from "lucide-react"
 import { Suspense } from "react"
 
-const MessagesPage = () => {
+const MessagesPage = async () => {
+  const messages = await getAllUserMessages(1)
+
+  console.log(messages.data)
+
   return (
     <Tile className="flow">
       <header className="flex items-center justify-between flex-wrap">
@@ -28,13 +32,13 @@ const MessagesPage = () => {
           "",
         ]}
       >
-        {messagesData.map(message => (
+        {messages.data?.result.map(message => (
           <TableRow key={message.id}>
             <TableCell className="py-4 px-6">{message.id}</TableCell>
-            <TableCell className="py-4 px-6">{message.sender.name}</TableCell>
-            <TableCell className="py-4 px-6">{message.sender.email}</TableCell>
-            <TableCell className="py-4 px-6">{message.sender.phone}</TableCell>
-            <TableCell className="py-4 px-6">{message.date}</TableCell>
+            <TableCell className="py-4 px-6">{message.name}</TableCell>
+            <TableCell className="py-4 px-6">{message.email}</TableCell>
+            <TableCell className="py-4 px-6">{message.phone}</TableCell>
+            <TableCell className="py-4 px-6">{message.createdAt}</TableCell>
             <TableCell className="py-4 px-6">
               <div className="flex items-center gap-2">
                 <Modal
@@ -44,7 +48,7 @@ const MessagesPage = () => {
                       "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
                   }}
                 >
-                  <p className="text-xl">{message.message}</p>
+                  <p className="text-xl">{message.createdAt}</p>
                 </Modal>
                 <Button
                   className="aspect-square w-[50px]"

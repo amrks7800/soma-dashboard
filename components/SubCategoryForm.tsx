@@ -4,31 +4,45 @@ import FormGroup from "./FormGroup"
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
 import { DataSelect } from "./DataSelect"
-import { categoriesData } from "@/constants"
 
 type Props = {
   category?: Category
+  categories: Category[]
 } & ComponentProps<"form">
 
-const SubCategoryForm: FC<Props> = ({ category, className, ...props }) => {
-  const categoryOptions = categoriesData.map(cat => ({
-    name: cat.nameAr,
-    value: cat.nameAr,
+const SubCategoryForm: FC<Props> = ({
+  category,
+  categories,
+  className,
+  ...props
+}) => {
+  const categoryOptions = categories.map(cat => ({
+    name: cat.categoryNameAr,
+    value: cat.id,
   }))
+
+  const action = async (formData: FormData) => {
+    console.log(Object.fromEntries(formData.entries()))
+  }
+
   return (
-    <form className={cn("grid gap-4", className)} {...props}>
+    <form className={cn("grid gap-4", className)} {...props} action={action}>
       <DataSelect
         placeholder="اسم القسم"
         options={categoryOptions}
         triggerProps={{
           className: "w-full",
         }}
+        name="categoryID"
       />
       <FormGroup
         label="اسم الفئة بالانجليزي:"
-        defaultValue={category?.nameEn}
+        defaultValue={category?.categoryNameEn}
       />
-      <FormGroup label="اسم الفئة بالعربي:" defaultValue={category?.nameAr} />
+      <FormGroup
+        label="اسم الفئة بالعربي:"
+        defaultValue={category?.categoryNameAr}
+      />
 
       <Button
         variant={"outline"}

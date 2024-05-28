@@ -21,7 +21,6 @@ const CategoryForm: FC<Props> = ({
       className={cn("grid gap-4", className)}
       {...props}
       action={formAction}
-      encType="multipart/form-data"
     >
       <FormGroup
         label="اسم القسم بالانجليزي:"

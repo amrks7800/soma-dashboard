@@ -33,22 +33,28 @@ export type Color = {
 }
 
 export type Product = {
-  productName: string
-  productReviews: string
-  price: string
-  discountPrice: number | null
-  createdAt: string
-  totalRates: number | null
-  ratedUsersCount: number | null
-  description: string
-  colorName: string
   id: string
-  productImages: string
+  productName: string
+  productReviews: string[]
+  price: string
   mainImage: string
   coverImage: string
   header: string
-  productCapacity?: number
-  group: null | string
+  productCapacity: number
+  discountPrice: number
+  createdAt: string
+  totalRates: string | null
+  ratedUsersCount: string | null
+  description: string
+  colorName: string
+  categoryId: string
+  category: {
+    categoryNameAr: string
+    categoryNameEn: string
+    productModules: string[]
+  }
+  group: string | undefined
+  productImages: string[]
 }
 
 export type Category = {
@@ -77,8 +83,12 @@ export type Paragraph = {
 }
 
 export type GroupType = {
+  id: string
   name: string
-  description: string
+  createdAt: string
+  createdBy: string
+  deletedAt: string | null
+  deletedBy: string | null
 }
 
 export type ReturnType<T extends {}> = {
@@ -88,3 +98,19 @@ export type ReturnType<T extends {}> = {
 }
 
 export type ProductsQueryReturnType = ReturnType<Product[]>
+
+export type Module = {
+  productName: string
+  logoUrl: string
+  createdBy: string
+  categoryId: string
+  id: string
+}
+
+export type Message = {
+  id: string
+  name: string
+  email: string
+  createdAt: string
+  phone: string
+}

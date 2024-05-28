@@ -1,5 +1,9 @@
 import ProductForm from "@/components/product-form"
-import { getProductByID } from "@/fetchers"
+import {
+  getAllCategories,
+  getAllProductsGroup,
+  getProductByID,
+} from "@/fetchers"
 import { FC } from "react"
 
 type Props = {
@@ -9,14 +13,27 @@ type Props = {
 }
 
 const ProductFormPage: FC<Props> = async ({ params: { id } }) => {
-  //use the id to fetch the product from api
-  console.log(id)
+  const productPromise = getProductByID(id)
+  const categoriesPromise = getAllCategories(1)
 
-  const product = await getProductByID(id)
+  const groupsPromise = getAllProductsGroup()
+
+  const [product, categories, groups] = await Promise.all([
+    productPromise,
+    categoriesPromise,
+    groupsPromise,
+  ])
 
   return (
     <div>
-      <ProductForm product={product?.data?.result} />
+      <ProductForm
+        product={product?.data?.result}
+        categories={categories.data?.result || []}
+        groups={groups.data?.result || []}
+        action={async (formData: FormData) => {
+          "use server"
+        }}
+      />
     </div>
   )
 }

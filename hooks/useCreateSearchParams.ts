@@ -1,6 +1,6 @@
 import { createSearchParam } from "@/utils"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { FormEvent, useState } from "react"
+import { useEffect, useState } from "react"
 
 const useCreateSearchParams = (queryName: string) => {
   const searchParam = useSearchParams()
@@ -8,18 +8,14 @@ const useCreateSearchParams = (queryName: string) => {
   const router = useRouter()
   const [query, setQuery] = useState("")
 
-  function handleSearch(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
+  useEffect(() => {
     const params = createSearchParam(queryName, `${query}`, searchParam)
-
     router.push(pathname + "?" + params)
-  }
+  }, [query])
 
   return {
     query,
     setQuery,
-    createParam: handleSearch,
   }
 }
 export default useCreateSearchParams

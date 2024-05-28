@@ -4,9 +4,14 @@ import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { subscribersData } from "@/constants"
+import { getAllUserSubscriptions } from "@/fetchers"
 import { Trash } from "lucide-react"
 
-const SubscribersPage = () => {
+const SubscribersPage = async () => {
+  const subscriptions = await getAllUserSubscriptions()
+
+  console.log(subscriptions.data)
+
   return (
     <Tile className="flow">
       <h2 className="text-lg font-[600]">قائمة المشتركين</h2>

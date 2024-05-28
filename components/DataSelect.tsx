@@ -1,4 +1,4 @@
-import * as React from "react"
+"use client"
 
 import {
   Select,
@@ -10,17 +10,19 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
+import { useState, ComponentProps } from "react"
 
 type Props = {
   options: {
     value: string
     name: string
   }[]
-  triggerProps?: React.ComponentProps<typeof SelectTrigger>
+  triggerProps?: ComponentProps<typeof SelectTrigger>
   placeholder: string
   label?: string
   isColored?: boolean
   defaultValue?: string
+  name?: string
 }
 
 export function DataSelect({
@@ -30,31 +32,40 @@ export function DataSelect({
   label,
   isColored = false,
   defaultValue,
+  name = undefined,
 }: Props) {
+  const [value, setValue] = useState("")
   return (
-    <Select dir="rtl" defaultValue={defaultValue}>
-      <SelectTrigger
-        {...triggerProps}
-        className={cn("w-[180px]", triggerProps?.className)}
+    <>
+      <Select
+        dir="rtl"
+        defaultValue={defaultValue}
+        onValueChange={e => setValue(e)}
       >
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>{label}</SelectLabel>
-          {options.map(option => (
-            <SelectItem
-              value={option.value}
-              key={option.value}
-              style={{
-                background: isColored ? option.value : "",
-              }}
-            >
-              {option.name}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+        <SelectTrigger
+          {...triggerProps}
+          className={cn("w-[180px]", triggerProps?.className)}
+        >
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>{label}</SelectLabel>
+            {options.map(option => (
+              <SelectItem
+                value={option.value}
+                key={option.value}
+                style={{
+                  background: isColored ? option.value : "",
+                }}
+              >
+                {option.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <input type="hidden" name={name} value={value} />
+    </>
   )
 }

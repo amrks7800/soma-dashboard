@@ -1,32 +1,27 @@
-import { addCategory } from "@/actions"
-import CategoryForm from "@/components/CategoryForm"
+import { deleteCategoryByID } from "@/actions"
+import AddCategoryModal from "@/components/AddCategoryModal"
 import DataPagination from "@/components/DataPagination"
-import Modal from "@/components/Modal"
+import DeleteCategoryButton from "@/components/DeleteCategoryButton"
+import EditCategoryForm from "@/components/EditCategoryForm"
 import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
-import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { getAllCategories } from "@/fetchers"
-import { Edit, Trash } from "lucide-react"
+import { revalidateTag } from "next/cache"
+import { FC } from "react"
 
-const AddCategoryPage = async () => {
-  const categories = await getAllCategories()
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-  console.log(categories?.data?.result[0].logoUrl)
+const AddCategoryPage: FC<Props> = async ({ searchParams }) => {
+  const categories = await getAllCategories(Number(searchParams.page))
 
   return (
     <Tile className="flow">
       <header className="flex items-center justify-between">
         <h2 className="text-lg font-[600]">الاقسام</h2>
-        <Modal
-          triggerText={"اضافة قسم"}
-          triggerProps={{
-            className:
-              "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
-          }}
-        >
-          <CategoryForm formAction={addCategory} />
-        </Modal>
+        <AddCategoryModal />
       </header>
       <DataTable
         headers={[
@@ -61,24 +56,16 @@ const AddCategoryPage = async () => {
             </TableCell>
             <TableCell className="py-4 px-6">
               <div className="flex items-center gap-2">
-                <Modal
-                  triggerText={<Edit size={15} />}
-                  triggerProps={{
-                    className:
-                      "aspect-square w-[35px] border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
+                <EditCategoryForm category={category} />
+                <form
+                  action={async () => {
+                    "use server"
+                    deleteCategoryByID(category.id)
+                    revalidateTag("category")
                   }}
                 >
-                  <CategoryForm category={category} />
-                </Modal>
-                <Button
-                  className="aspect-square w-[35px] h-[35px]"
-                  variant={"outline"}
-                  title="حذف المنتج"
-                >
-                  <div>
-                    <Trash size={15} />
-                  </div>
-                </Button>
+                  <DeleteCategoryButton />
+                </form>
               </div>
             </TableCell>
           </TableRow>

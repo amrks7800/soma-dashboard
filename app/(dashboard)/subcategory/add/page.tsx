@@ -1,3 +1,4 @@
+import AddSubcategoryModal from "@/components/AddSubcategoryModal"
 import DataPagination from "@/components/DataPagination"
 import Modal from "@/components/Modal"
 import SubCategoryForm from "@/components/SubCategoryForm"
@@ -6,22 +7,30 @@ import DataTable from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { categoriesData, sectionsData } from "@/constants"
+import { getAllCategories, getAllModules } from "@/fetchers"
 import { Edit, Trash } from "lucide-react"
+import { FC } from "react"
 
-const AddSubcategoryPage = () => {
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+const AddSubcategoryPage: FC<Props> = async ({ searchParams }) => {
+  const modulesPromise = getAllModules()
+  const categoriesPromise = getAllCategories(Number(searchParams.page))
+
+  const [modules, categories] = await Promise.all([
+    modulesPromise,
+    categoriesPromise,
+  ])
+
+  console.log(categories.data?.result)
+
   return (
     <Tile className="flow">
       <header className="flex items-center justify-between">
         <h2 className="text-lg font-[600]">الفئات</h2>
-        <Modal
-          triggerText={"اضافة فئة"}
-          triggerProps={{
-            className:
-              "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
-          }}
-        >
-          <SubCategoryForm />
-        </Modal>
+        <AddSubcategoryModal categories={categories.data?.result || []} />
       </header>
       <DataTable
         headers={[
@@ -55,7 +64,7 @@ const AddSubcategoryPage = () => {
                       "aspect-square w-[35px] border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
                   }}
                 >
-                  <SubCategoryForm category={category} />
+                  <SubCategoryForm categories={categories.data?.result || []} />
                 </Modal>
                 <Button
                   className="aspect-square w-[35px] h-[35px]"

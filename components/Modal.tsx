@@ -15,6 +15,8 @@ type Props = {
   dialogTitle?: string
   description?: string
   children: ReactNode
+  open?: boolean
+  // toggle?: (bool: boolean) => void
 }
 
 const Modal: FC<Props> = ({
@@ -23,9 +25,10 @@ const Modal: FC<Props> = ({
   triggerText = "فتح",
   dialogTitle,
   description,
+  open = false,
 }) => {
   return (
-    <Dialog>
+    <Dialog open={open}>
       <DialogTrigger {...triggerProps}>{triggerText}</DialogTrigger>
       <DialogContent dir="rtl">
         <DialogHeader>
