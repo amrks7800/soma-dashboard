@@ -16,6 +16,10 @@ type Props = {
 const ProductTableRow: FC<Props> = async ({ product }) => {
   const fullProduct = await getProductByID(product.id)
 
+  const mainImageUrl = product.mainImage.startsWith("/")
+    ? product.mainImage
+    : `/${product.mainImage}`
+
   return (
     <TableRow key={product.id}>
       <TableCell className="py-4 px-6">
@@ -25,7 +29,7 @@ const ProductTableRow: FC<Props> = async ({ product }) => {
         <div className="border p-4 grid place-content-center relative aspect-square rounded-lg">
           <Image
             fill
-            src={"/" + product.mainImage}
+            src={"https://elaf-backend.onrender.com" + mainImageUrl}
             alt="product image"
             className="object-cover object-center"
           />

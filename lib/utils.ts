@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwZTQ5YzZjLWU1NDEtNGY3NS05YjFjLTU4YzRjMTkxM2NiYSIsImlhdCI6MTcxNjkwODgzNiwiZXhwIjoxNzE5NTAwODM2fQ.Kr_7XJIOwvAHiQkQMrpBNOIo6qG7-F08OUNEPIUVmXg"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVjOTYwMzk5LTRhZWItNDgzNi04ZTk1LTUyYWYxOTBjYzZlYiIsImlhdCI6MTcxODAzNjAwNiwiZXhwIjoxNzIwNjI4MDA2fQ.L8Vb1mW-yJypr0SqOFrt8JVR8uWW8sVCanKy96iAHRs"
 
 axios.defaults.headers["authorization"] = `bearer ${token}`
 
@@ -39,7 +39,7 @@ export async function baseQuery<T extends {}>(
   } catch (err) {
     return {
       success: false,
-      error: err as Error,
+      error: (err as Error).message,
       data: null,
     }
   }
@@ -50,27 +50,17 @@ export async function baseMutation<T extends {}>(
   url: string,
   body?: T
 ) {
+  const axiosMethods = {
+    POST: axios.post,
+    PUT: axios.put,
+    PATCH: axios.patch,
+    DELETE: axios.delete,
+  }
+
   try {
-    let caller
+    const mutate = axiosMethods[method] || axios.post
 
-    switch (method) {
-      case "POST":
-        caller = axios.post
-        break
-      case "PATCH":
-        caller = axios.patch
-        break
-      case "PUT":
-        caller = axios.put
-        break
-      case "DELETE":
-        caller = axios.delete
-        break
-      default:
-        caller = axios.post
-    }
-
-    const promise = await caller(
+    const promise = await mutate(
       `https://elaf-backend.onrender.com/${url}`,
       body,
       {
@@ -95,8 +85,17 @@ export async function baseMutation<T extends {}>(
   } catch (err) {
     return {
       success: false,
-      error: (err as AxiosError).response,
+      error: {
+        status: (err as AxiosError).response?.status,
+        statusText: (err as AxiosError).response?.statusText,
+      },
       data: null,
     }
   }
+}
+
+// libs/utils.ts
+
+export const range = (end: number): number[] => {
+  return Array.from({ length: end }, (_, i) => i + 1)
 }

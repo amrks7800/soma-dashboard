@@ -55,7 +55,9 @@ const OrdersPage: FC<Props> = ({ searchParams }) => {
         ))}
       </DataTable>
       <div className="text-start">
-        <DataPagination />
+        <Suspense fallback="loading...">
+          <DataPagination />
+        </Suspense>
       </div>
     </Tile>
   )

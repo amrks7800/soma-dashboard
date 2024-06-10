@@ -36,7 +36,9 @@ const ProductsPage = async () => {
         </DataTable>
       </Suspense>
       <div className="p-5 text-end">
-        <DataPagination />
+        <Suspense fallback="loading...">
+          <DataPagination />
+        </Suspense>
       </div>
     </Tile>
   )

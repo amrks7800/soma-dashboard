@@ -5,7 +5,6 @@ import Modal from "./Modal"
 import CategoryForm from "./CategoryForm"
 import type { Category } from "@/types"
 import { FC, useState } from "react"
-import { editCategory } from "@/actions"
 
 type Props = {
   category: Category
@@ -13,12 +12,6 @@ type Props = {
 
 const EditCategoryForm: FC<Props> = ({ category }) => {
   const [open, setOpen] = useState(false)
-
-  const clientAction = async (formData: FormData) => {
-    const result = await editCategory(formData, category.id)
-
-    if (result.success) setOpen(false)
-  }
 
   return (
     <Modal
@@ -30,7 +23,13 @@ const EditCategoryForm: FC<Props> = ({ category }) => {
         onClick: () => setOpen(prev => !prev),
       }}
     >
-      <CategoryForm category={category} formAction={clientAction} />
+      <CategoryForm
+        category={category}
+        mode="edit"
+        closeModal={() => {
+          setOpen(false)
+        }}
+      />
     </Modal>
   )
 }

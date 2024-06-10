@@ -607,21 +607,3 @@ export const bannersData = [
   },
   // ... Add more pages here following the same structure
 ]
-
-export const groupsData: GroupType[] = [
-  {
-    name: "Group A",
-    description:
-      "This is the description for Group A. It can contain any relevant information about the group.",
-  },
-  {
-    name: "Group B",
-    description:
-      "This is the description for Group B. You can add details about the purpose or activities of the group.",
-  },
-  {
-    name: "Group C",
-    description:
-      "Feel free to add more groups to this array. Each group object should have a 'name' and 'description' property.",
-  },
-]

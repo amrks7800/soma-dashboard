@@ -8,23 +8,34 @@ import FormGroup from "../FormGroup"
 import { DataSelect } from "../DataSelect"
 import { colorsData } from "@/constants"
 import SubmitButton from "../SubmitButton"
-import { Loader2 } from "lucide-react"
+import { Loader } from "lucide-react"
+import { addProduct, editProduct } from "@/actions"
 
-type Props<T> = Omit<ComponentProps<"form">, "action"> & {
+type Props = Omit<ComponentProps<"form">, "action"> & {
   product?: Product
-  action: T
   categories: Category[]
   groups: GroupType[]
+  mode?: "add" | "edit"
 }
 
-const ProductForm = <T extends string | ((formData: FormData) => void)>({
+const ProductForm = ({
   product,
   className,
-  action,
   categories,
   groups,
+  mode = "add",
   ...props
-}: Props<T>) => {
+}: Props) => {
+  const formAction = async (formData: FormData) => {
+    if (mode === "add") {
+      await addProduct(formData)
+    } else if (mode === "edit" && product) {
+      await editProduct(formData, product.id)
+    }
+  }
+
+  console.log("product", product)
+
   const sectionsOptions =
     categories?.map(item => ({
       name: item.categoryNameAr,
@@ -47,12 +58,12 @@ const ProductForm = <T extends string | ((formData: FormData) => void)>({
       {...props}
       className={cn(className, "grid gap-4")}
       dir="rtl"
-      action={action}
+      action={formAction}
     >
       <FileFormGroup
         label="الصورة الرئيسية"
         labelStyles="text-primary-blue text-xl"
-        name="mainImage"
+        name={"mainImage"}
       />
       <FileFormGroup
         label="صورة الغلاف"
@@ -89,19 +100,22 @@ const ProductForm = <T extends string | ((formData: FormData) => void)>({
         <FormGroup
           label="الخصم"
           labelStyles="text-primary-blue text-xl"
-          defaultValue={product?.discountPrice || "no discount"}
+          defaultValue={product?.discountPrice}
           name="discountPrice"
         />
         <FormGroup
           label="الوصف القصير"
           labelStyles="text-primary-blue text-xl"
-          defaultValue={product?.description}
+          defaultValue={product?.header}
           name="header"
         />
 
         <div className="flex flex-col gap-0.5">
           <h2 className="text-primary-blue text-xl">الوصف الطويل</h2>
-          <textarea name="description"></textarea>
+          <textarea
+            name="description"
+            defaultValue={product?.description}
+          ></textarea>
         </div>
       </div>
       <DataSelect
@@ -109,7 +123,7 @@ const ProductForm = <T extends string | ((formData: FormData) => void)>({
         options={sectionsOptions}
         placeholder="اختر القسم"
         triggerProps={{ className: "w-full" }}
-        defaultValue={product?.categoryId || undefined}
+        defaultValue={product?.categoryId}
         name="categoryId"
       />
       <DataSelect
@@ -117,7 +131,7 @@ const ProductForm = <T extends string | ((formData: FormData) => void)>({
         options={groupOptions}
         placeholder="اختر المجموعة"
         triggerProps={{ className: "w-full" }}
-        defaultValue={product?.group || undefined}
+        defaultValue={product?.group?.id}
         name="groupId"
       />
       <div className="flex flex-wrap gap-4 *:flex-1">
@@ -127,7 +141,7 @@ const ProductForm = <T extends string | ((formData: FormData) => void)>({
           placeholder={"اختر اللون"}
           triggerProps={{ className: "w-full" }}
           isColored
-          defaultValue={product?.colorName || undefined}
+          defaultValue={product?.colorName}
           name="colorName"
         />
         <DataSelect
@@ -170,7 +184,7 @@ const ProductForm = <T extends string | ((formData: FormData) => void)>({
 
       <SubmitButton
         buttonText={product ? "رفع التعديلات" : "رفع المنتج"}
-        loadingUi={<Loader2 />}
+        loadingUi={<Loader className="animate-spin" />}
         className="text-white text-lg font-[600] bg-primary-blue hover:opacity-70 hover:bg-primary-blue"
       />
     </form>

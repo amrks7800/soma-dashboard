@@ -25,6 +25,21 @@ type Props = {
   name?: string
 }
 
+/**
+ * A custom select component with support for right-to-left (RTL) direction,
+ * colored options, and hidden input for form submission.
+ *
+ * @param options - An array of objects representing the selectable options.
+ * Each object should have a `value` and `name` property.
+ * @param triggerProps - Additional props to pass to the SelectTrigger component.
+ * @param placeholder - The placeholder text for the select input.
+ * @param label - The label text for the select component.
+ * @param isColored - A boolean indicating whether the options should be colored.
+ * @param defaultValue - The initial selected value of the select component.
+ * @param name - The name attribute for the hidden input field.
+ *
+ * @returns A React component that renders the custom select component.
+ */
 export function DataSelect({
   options,
   triggerProps,
@@ -34,7 +49,7 @@ export function DataSelect({
   defaultValue,
   name = undefined,
 }: Props) {
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState(defaultValue || "")
   return (
     <>
       <Select

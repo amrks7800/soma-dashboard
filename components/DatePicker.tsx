@@ -16,16 +16,17 @@ import {
 type Props = {
   label: string
   className?: string
+  defaultValue: string
 }
 
-export function DatePicker({ label, className }: Props) {
+export function DatePicker({ label, className, defaultValue }: Props) {
   const [date, setDate] = React.useState<Date>()
 
   return (
     <>
       <h3>{label}</h3>
       <Popover>
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild name="expireDate">
           <Button
             variant={"outline"}
             className={cn(
@@ -47,6 +48,11 @@ export function DatePicker({ label, className }: Props) {
           />
         </PopoverContent>
       </Popover>
+      <input
+        type="hidden"
+        value={JSON.stringify(date) || defaultValue}
+        name="expireDate"
+      />
     </>
   )
 }

@@ -25,7 +25,7 @@ const Modal: FC<Props> = ({
   triggerText = "فتح",
   dialogTitle,
   description,
-  open = false,
+  open = undefined,
 }) => {
   return (
     <Dialog open={open}>
@@ -35,7 +35,9 @@ const Modal: FC<Props> = ({
           <DialogTitle>{dialogTitle}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
-        {children}
+        <div className="max-h-[500px] overflow-y-scroll">
+          <div>{children}</div>
+        </div>
       </DialogContent>
     </Dialog>
   )

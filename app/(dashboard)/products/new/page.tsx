@@ -1,10 +1,5 @@
-import { addProduct } from "@/actions"
 import ProductForm from "@/components/product-form"
 import { getAllCategories, getAllProductsGroup } from "@/fetchers"
-
-export const dynamic = "force-dynamic"
-
-export const revalidate = 0
 
 const NewProductFormPage = async () => {
   const categoriesPromise = getAllCategories(1)
@@ -16,20 +11,13 @@ const NewProductFormPage = async () => {
     categoriesPromise,
   ])
 
-  const formAction = async (formData: FormData) => {
-    "use server"
-
-    const result = await addProduct(formData)
-
-    console.log(result)
-  }
-
   return (
     <ProductForm
-      action={formAction}
       categories={categories.data?.result || []}
       groups={groups.data?.result || []}
+      mode="add"
     />
   )
 }
+
 export default NewProductFormPage

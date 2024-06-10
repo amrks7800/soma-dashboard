@@ -22,7 +22,10 @@ const AddSubcategoryModal: FC<Props> = ({ categories }) => {
         onClick: () => setOpen(true),
       }}
     >
-      <SubCategoryForm categories={categories} />
+      <SubCategoryForm
+        categories={categories}
+        closeModal={() => setOpen(false)}
+      />
     </Modal>
   )
 }

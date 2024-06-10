@@ -67,7 +67,9 @@ export default async function Home({ searchParams }: Props) {
           </DataTable>
         </Suspense>
         <div className="text-start">
-          <DataPagination />
+          <Suspense fallback="loading...">
+            <DataPagination />
+          </Suspense>
         </div>
       </Tile>
     </div>

@@ -10,18 +10,16 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 import useCreateSearchParams from "@/hooks/useCreateSearchParams"
+import { range } from "@/lib/utils"
 
 type Props = {
   pagesCount?: number
 }
 
-export default function DataPagination({ pagesCount = 2 }: Props) {
+export default function DataPagination({ pagesCount = 1 }: Props) {
   const { setQuery } = useCreateSearchParams("page")
 
-  let pagesArray = []
-  for (let i = 1; i <= pagesCount; i++) {
-    pagesArray.push(i)
-  }
+  const pagesArray = range(pagesCount)
 
   return (
     <Pagination className="inline" dir="ltr">

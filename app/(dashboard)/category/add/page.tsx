@@ -1,14 +1,14 @@
 import { deleteCategoryByID } from "@/actions"
 import AddCategoryModal from "@/components/AddCategoryModal"
 import DataPagination from "@/components/DataPagination"
-import DeleteCategoryButton from "@/components/DeleteCategoryButton"
+import DeleteButton from "@/components/DeleteButton"
 import EditCategoryForm from "@/components/EditCategoryForm"
 import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
 import { TableCell, TableRow } from "@/components/ui/table"
 import { getAllCategories } from "@/fetchers"
 import { revalidateTag } from "next/cache"
-import { FC } from "react"
+import { FC, Suspense } from "react"
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -64,7 +64,7 @@ const AddCategoryPage: FC<Props> = async ({ searchParams }) => {
                     revalidateTag("category")
                   }}
                 >
-                  <DeleteCategoryButton />
+                  <DeleteButton />
                 </form>
               </div>
             </TableCell>
@@ -72,7 +72,9 @@ const AddCategoryPage: FC<Props> = async ({ searchParams }) => {
         ))}
       </DataTable>
       <div className="p-5 text-end">
-        <DataPagination />
+        <Suspense fallback="loading...">
+          <DataPagination />
+        </Suspense>
       </div>
     </Tile>
   )

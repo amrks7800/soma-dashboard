@@ -1,36 +1,37 @@
-import { Button } from "@/components/ui/button"
 import FormGroup from "./FormGroup"
-import { GroupType } from "@/types"
 import { FC } from "react"
+import { addNewGroup, editGroupByID } from "@/actions"
+import SubmitButton from "./SubmitButton"
+import { Loader } from "lucide-react"
 
 type Props = {
-  group?: GroupType
+  closeModal: () => void
 }
 
-const GroupForm: FC<Props> = ({ group }) => {
+const GroupForm: FC<Props> = ({ closeModal }) => {
+  const formAction = async (formData: FormData) => {
+    const name = formData.get("name") as string
+
+    const result = await addNewGroup(name)
+
+    if (result.success) closeModal()
+  }
+
   return (
-    <form className="grid gap-4">
+    <form className="grid gap-4" action={formAction}>
       <FormGroup
         labelStyles="text-primary-blue"
         label="اسم المجموعة"
         id="group-name"
         placeholder="ادخل اسم المجموعة"
-        defaultValue={group?.name}
+        name="name"
       />
-      <label htmlFor="group-desc" className="text-primary-blue">
-        وصف المجموعة
-      </label>
-      <textarea
-        id="group-desc"
-        className="border"
-        defaultValue={group?.description}
-      ></textarea>
-      <Button
-        variant={"outline"}
+
+      <SubmitButton
         className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
-      >
-        حفظ
-      </Button>
+        buttonText="حفظ"
+        loadingUi={<Loader className="animate-spin" />}
+      />
     </form>
   )
 }

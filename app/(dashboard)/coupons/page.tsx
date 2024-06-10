@@ -1,27 +1,26 @@
-import CouponForm from "@/components/CouponForm"
+import { deleteCouponByID } from "@/actions"
+import AddCouponModal from "@/components/AddCouponModal"
 import DataPagination from "@/components/DataPagination"
-import Modal from "@/components/Modal"
+import DeleteButton from "@/components/DeleteButton"
+import EditCouponModal from "@/components/EditCouponModal"
 import Tile from "@/components/Tile"
 import DataTable from "@/components/data-table"
-import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
-import { couponsData } from "@/constants"
-import { Edit, Trash } from "lucide-react"
+import { getAllCoupons } from "@/fetchers"
+import { Suspense } from "react"
 
-const CouponsPage = () => {
+export const revalidate = 0
+export const dynamic = "force-dynamic"
+
+const CouponsPage = async () => {
+  const coupons = await getAllCoupons()
+
+  console.log(coupons.data?.result)
   return (
     <Tile className="flow">
       <header className="flex items-center justify-between">
         <h2 className="text-lg font-[600]">قائمة الكوبونات</h2>
-        <Modal
-          triggerText={"اضافة كوبون"}
-          triggerProps={{
-            className:
-              "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
-          }}
-        >
-          <CouponForm />
-        </Modal>
+        <AddCouponModal />
       </header>
       <DataTable
         headers={[
@@ -34,43 +33,39 @@ const CouponsPage = () => {
           "",
         ]}
       >
-        {couponsData.map(coupon => (
+        {coupons.data?.result.map((coupon, idx) => (
           <TableRow key={coupon.id}>
-            <TableCell className="py-4 px-6">{coupon.id}</TableCell>
-            <TableCell className="py-4 px-6">{coupon.couponCode}</TableCell>
-            <TableCell className="py-4 px-6">{coupon.couponType}</TableCell>
+            <TableCell className="py-4 px-6">{idx + 1}</TableCell>
+            <TableCell className="py-4 px-6">{coupon.code}</TableCell>
             <TableCell className="py-4 px-6">
-              {coupon.discountValue || 0}%
+              {coupon.voucherTypeId === 1 ? "شحن مجاني" : "خصم"}
             </TableCell>
-            <TableCell className="py-4 px-6">{coupon.expiryDate}</TableCell>
-            <TableCell className="py-4 px-6">{coupon.numberOfUsers}</TableCell>
+            <TableCell className="py-4 px-6">
+              {coupon.discountPrecentage || 0}%
+            </TableCell>
+            <TableCell className="py-4 px-6">{coupon.expireDate}</TableCell>
+            <TableCell className="py-4 px-6">{coupon.userCount}</TableCell>
             <TableCell className="py-4 px-6">
               <div className="flex items-center gap-3">
-                <Modal
-                  triggerText={<Edit size={15} />}
-                  triggerProps={{
-                    className:
-                      "aspect-square w-[35px] border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
+                <EditCouponModal coupon={coupon} />
+
+                <form
+                  action={async () => {
+                    "use server"
+                    await deleteCouponByID(coupon.id)
                   }}
                 >
-                  <CouponForm coupon={coupon} />
-                </Modal>
-                <Button
-                  className="aspect-square w-[35px] h-[35px]"
-                  variant={"outline"}
-                  title="حذف الكوبون"
-                >
-                  <div>
-                    <Trash size={15} />
-                  </div>
-                </Button>
+                  <DeleteButton />
+                </form>
               </div>
             </TableCell>
           </TableRow>
         ))}
       </DataTable>
       <div className="text-end">
-        <DataPagination />
+        <Suspense fallback="loading...">
+          <DataPagination />
+        </Suspense>
       </div>
     </Tile>
   )

@@ -1,28 +1,23 @@
 "use client"
 
-import CategoryForm from "./CategoryForm"
-import Modal from "./Modal"
 import { useState } from "react"
+import GroupForm from "./GroupForm"
+import Modal from "./Modal"
 
-const AddCategoryModal = () => {
+const AddGroupModal = () => {
   const [open, setOpen] = useState(false)
-
   return (
     <Modal
       open={open}
-      triggerText={"اضافة قسم"}
+      triggerText={"اضافة مجموعة"}
       triggerProps={{
         className:
           "py-2 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground grid place-content-center rounded-md",
-        onClick: () => setOpen(prev => !prev),
+        onClick: () => setOpen(true),
       }}
     >
-      <CategoryForm
-        closeModal={() => {
-          setOpen(false)
-        }}
-      />
+      <GroupForm closeModal={() => setOpen(false)} />
     </Modal>
   )
 }
-export default AddCategoryModal
+export default AddGroupModal

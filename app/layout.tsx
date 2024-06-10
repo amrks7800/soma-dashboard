@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Cairo } from "next/font/google"
 import "./globals.css"
 import Providers from "@/components/Providers"
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "react-hot-toast"
 
 const cairo = Cairo({ subsets: ["latin", "arabic"] })
 

@@ -1,4 +1,4 @@
-import ProductForm from "@/components/product-form"
+import EditProductForm from "@/components/EditProductForm"
 import {
   getAllCategories,
   getAllProductsGroup,
@@ -25,16 +25,11 @@ const ProductFormPage: FC<Props> = async ({ params: { id } }) => {
   ])
 
   return (
-    <div>
-      <ProductForm
-        product={product?.data?.result}
-        categories={categories.data?.result || []}
-        groups={groups.data?.result || []}
-        action={async (formData: FormData) => {
-          "use server"
-        }}
-      />
-    </div>
+    <EditProductForm
+      product={product?.data?.result}
+      categories={categories.data?.result || []}
+      groups={groups.data?.result || []}
+    />
   )
 }
 export default ProductFormPage
